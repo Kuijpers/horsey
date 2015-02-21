@@ -21,6 +21,6 @@ class Debug {
      * @param string $data This is the sentence that will be shown with added info.
      */
     public static function sentence($data){
-        echo 'We are in '. $data;
+        echo 'We are in '. $data .'<br />';
     }
 }

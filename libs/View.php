@@ -28,38 +28,27 @@ class View{
     public function render($name,$type=null){
         switch($type)
         {
-            case 'register':
-        
-                require 'views/main/header.php';
-                require 'views/main/navbar.php';
-                require 'views/main/carousel.php';
-                require 'views/' . $name . '.php';
-                require 'views/main/footer.php';
-            
-            break;
             case 'main':
         
-                require 'views/main/header.php';
-                require 'views/main/navbar.php';
-                require 'views/main/carousel.php';
-                require 'views/' . $name . '.php';
-                require 'views/main/footer.php';
+                require 'public/main/template/header.php';
+                require 'public/main/template/nav.php';
+                require 'views/main/' . $name . '.php';
+                require 'public/main/template/footer.php';
             
             break;
             case 'dashboard':
         
-                require 'views/dashboard/header.php';
-                require 'views/dashboard/topnav.php';
-                require 'views/dashboard/sidenav.php';
-                require 'views/' . $name . '.php';
-                require 'views/dashboard/footer.php';
+                require 'public/dashboard/template/header.php';
+                require 'public/dashboard/template/nav.php';
+                require 'views/dashboard/' . $name . '.php';
+                require 'public/dashboard/template/footer.php';
             
             break;
             case 'login':
         
-                require 'views/login/header.php';
-                require 'views/' . $name . '.php';
-                require 'views/login/footer.php';
+                require 'public/login/template/header.php';
+                require 'views/log/' . $name . '.php';
+                require 'public/login/template/footer.php';
             
             break;
             default:

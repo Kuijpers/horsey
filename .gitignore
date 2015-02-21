@@ -1,0 +1,6 @@
+.vagrant/
+Vagrantfile
+nbproject/
+bugs.txt
+test/
+config/personal.php
