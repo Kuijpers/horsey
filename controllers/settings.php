@@ -1,9 +1,9 @@
 <?php
 /**
- * Description of Dashboard
+ * Description of Settings
  * 
  * This class is an extension of the controller class
- * Within this class we handle everything needed for the dashboard main page
+ * Within this class we handle everything needed for the Settings page
  * 
  * This is a private page. Login is required.
  *
@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Dashboard extends Controller{
+class Settings extends Controller{
     
     /**
      *  function __construct will automatically generate when method is called
@@ -20,7 +20,7 @@ class Dashboard extends Controller{
     public function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
         
-            Debug::sentence("dashboard controller");
+            Debug::sentence("Settings controller");
         //Cookie::cookie_display();die();
         
         /**
@@ -45,10 +45,10 @@ class Dashboard extends Controller{
      */
     
     public function index(){
-          $this->view->title = 'Dashboard - Index';
+          $this->view->title = 'Dashboard - Settings';
           $this->view->topactive = 'dashboard';
           $this->view->active = 'dashboard';
-          $this->view->render('dashboard/index', 'dashboard'); 
+          $this->view->render('settings/index', 'dashboard'); 
     }
     
 }
