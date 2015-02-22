@@ -10,16 +10,16 @@
                             <div class="nav-collapse collapse navbar-responsive-collapse">
                                 <ul class="nav">
                                     <li class="active"><a href="<?php URL  ?>dashboard" class="make-round">Dashboard</a></li>
-                                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<i class="icon-angle-down"></i></a>
+                                    <li class="dropdown"> <a href="<?php URL  ?>home" class="dropdown-toggle" data-toggle="dropdown">Home<i class="icon-angle-down"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php URL  ?>home">Homepage</a></li>
+                                            <li><a href="<?php URL  ?>homepage">Homepage</a></li>
                                             <li><a href="<?php URL  ?>about_us">About us</a></li>
                                             <li><a href="<?php URL  ?>horses">Horses</a></li>
                                             <li><a href="<?php URL  ?>for_sale">For Sale</a></li>
                                             <li><a href="<?php URL  ?>links">Links</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<i class="icon-angle-down"></i></a>
+                                    <li class="dropdown"> <a href="<?php URL  ?>settings" class="dropdown-toggle" data-toggle="dropdown">Settings<i class="icon-angle-down"></i></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php URL  ?>contact_settings">Contact</a></li>
                                             <li><a href="<?php URL  ?>breed_settings">Breeding</a></li>
