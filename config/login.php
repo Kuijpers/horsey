@@ -19,4 +19,4 @@
 define('LOGIN_TYPE', 1);
 
 // Name for the login cookie
-define('COOKIE_LOG_NAME',"efemeslogin");
+define('COOKIE_LOG_NAME', $personal['COOKIE_LOG_NAME']);

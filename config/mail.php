@@ -11,15 +11,15 @@
      *  Please check comments
      */
 
-define ('SMTPSERVER', 'smtp.telfort.nl'); // SMTP server name of your ISP
-define ('MAILUSER', 'darkknightworks.dev@gmail.com'); // Login for gmail
-define ('MAILPW', 'darkknightworks'); // Password for gmail
+define ('SMTPSERVER', $personal['SMTPSERVER']); // SMTP server name of your ISP
+define ('MAILUSER', $personal['MAILUSER']); // Login for gmail
+define ('MAILPW', $personal['MAILPW']); // Password for gmail
 
 // MAILFROM and MAILREPLY are most of the time the same
-define ('MAILFROM', 'darkknightworks.dev@gmail.com'); // Where did the email come from
-define ('MAILFROMNAME', 'Dennis Kuijpers'); // Who did the email come from
-define ('MAILREPLY', 'darkknightworks.dev@gmail.com'); // To what email the reply has to be send
-define ('MAILREPLYNAME', 'Dennis Kuijpers'); // To whom the reply has to be send
+define ('MAILFROM', $personal['MAILFROM']); // Where did the email come from
+define ('MAILFROMNAME', $personal['MAILFROMNAME']); // Who did the email come from
+define ('MAILREPLY', $personal['MAILREPLY']); // To what email the reply has to be send
+define ('MAILREPLYNAME', $personal['MAILREPLYNAME']); // To whom the reply has to be send
 
 // Set an alternitive body for email
 define ('MAILALTBODY', 'To view the message, please use an HTML compatible email viewer!');

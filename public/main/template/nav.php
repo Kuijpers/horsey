@@ -52,7 +52,14 @@
                                     </li>
                                     <li><a href="<?php URL  ?>friends">Friends</a></li>
                                     <li><a href="<?php URL  ?>contact">Contact</a></li>
-                                    <li><a href="<?php URL  ?>dashboard">Dashboard</a></li>
+<?php
+                                        if(Logged::status_logged()){
+?>
+                                        <li><a href="<?php URL  ?>dashboard">Dashboard</a></li>  
+<?php
+                                        }
+?>
+                                    
                                 </ul>
                             </div>
                         <!-- /.nav-collapse --> 

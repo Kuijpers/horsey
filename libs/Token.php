@@ -23,6 +23,10 @@ class Token{
         $value = md5(uniqid());
         $token_name = TOKENNAME;
         
+        if(Session::exsist($token_name)){
+            Session::destroy();
+        }
+        
         return Session::set($token_name, $value);
     }
     /**

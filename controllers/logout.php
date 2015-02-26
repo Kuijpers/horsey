@@ -17,7 +17,7 @@ class Logout extends Controller{
      *  function __construct will automatically generate when method is called
      */
     
-    function __construct(){
+    public function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
         
             //Debug::sentence("logout controller");
@@ -26,23 +26,21 @@ class Logout extends Controller{
          * Check if user is already logged in with cookie or session.
          * If so delete cookie or session and redirect
          */        
-        if(LOGIN_TYPE == 1){
+        
              if(Cookie::cookie_exists(COOKIE_LOG_NAME)){
                         Cookie::cookie_delete(COOKIE_LOG_NAME);
                         Session::init();
                         Session::destroy();
-                header('location:index');
+                header('location:'.URL.'index');
                 exit;
                 }
-        }
+              else{
+                header('location:'.URL.'index');
+                exit;
+              }
         
-        if(LOGIN_TYPE == 2){
-            Session::init();
-            Session::destroy();
-            header('location:index');
-            exit;
-        }
     }
+    
     
     
     

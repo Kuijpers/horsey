@@ -29,6 +29,7 @@
                                     <li><a href="<?php URL  ?>customer_service">Customer service</a></li>
                                     <li><a href="<?php URL  ?>help">Help</a></li>
                                     <li><a href="<?php URL  ?>index">Website</a></li>
+                                    <li><a href="<?php URL  ?>logout">Log out</a></li>
                                 </ul>
                             </div>
                         <!-- /.nav-collapse --> 

@@ -36,11 +36,6 @@ $error = $this->error_call;
     </div>
     <div class="checkbox">
         <label>
-            Mocht u nog geen account hebben dan kunt u zich hier <a href="<?php echo URL ; ?>register">Registreren</a>
-        </label>
-    </div>
-    <div class="checkbox">
-        <label>
             <a href="">Wachtwoord vergeten?</a>
         </label>
     </div>

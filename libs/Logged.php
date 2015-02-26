@@ -23,31 +23,18 @@ class Logged {
      * @return boolean
      */
     public static function check_logged(){
-        
-//        switch (LOGIN_TYPE) {
-//            case 1:
-//                    if(!Cookie::cookie_exists(COOKIE_LOG_NAME)){
-//                        Cookie::cookie_delete(COOKIE_LOG_NAME);
-//                        Session::init();
-//                        Session::destroy();
-//                header('location:login');
-//                exit;
-//                }
-//                break;
-//            case 2:
-//                Session::init();
-//                $logged = Session::get('loggedIn');
-//                if($logged == FALSE){
-//                    Session::destroy();
-//                    header('location:login');
-//                    exit;
-//                }
-//                break;
-//
-//            default:
-//                break;
-//        }
+ 
+        if(!Cookie::cookie_exists(COOKIE_LOG_NAME)){
+                Cookie::cookie_delete(COOKIE_LOG_NAME);
+                Session::init();
+                Session::destroy();
+        header('location:login');
+        exit;
+        }
+        return TRUE;
     }
+    
+    
     
     public static function status_logged(){
         if(Cookie::cookie_exists(COOKIE_LOG_NAME)){

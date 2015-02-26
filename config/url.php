@@ -12,6 +12,6 @@
 
 // Always provide a TRAILING SLASH (/) after a path
 
-define ('URL', 'http://dev.horseycms.com/');
+define ('URL', $personal['URL']);
 define ('LIBS','libs/');
 

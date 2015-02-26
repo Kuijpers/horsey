@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 
 //echo "DIT IS DE INDEX PAGINA";
 
+require 'config/personal.php';
 require 'config/db.php';
 require 'config/login.php';
 require 'config/mail.php';
