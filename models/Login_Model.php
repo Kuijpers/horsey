@@ -40,6 +40,12 @@ class Login_Model extends Model{
          */
         if(!Token::check($_POST['token'])){
             echo "iets gaat fout";
+            echo "<br />";
+            echo "Session : ";
+            print_r($_SESSION);
+            echo "<br />";
+            echo "Post : ";
+            print_r($_POST);
             die();
         }
         /**
@@ -103,14 +109,12 @@ class Login_Model extends Model{
         elseif($count == 1 && $data['login_verification'] != "0"){
             // For debug remove slashes
                 //echo "Login not succesfull. Please try to login again"; die();
-            
-            header('location:'. URL .'login/error/LE1001');
+           header('location:'. URL .'login/error/LE1001');
             
         }
         else{
             // For debug remove slashes
                 //echo "Login not succesfull. Please try to login again"; die();
-            
             header('location:'. URL .'login/error/LE1002');
             
         }

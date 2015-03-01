@@ -8,8 +8,8 @@
 class Token{
 
     /**
-     * *  function __construct will automatically generate when method is called
-     * */
+     *  function __construct will automatically generate when method is called
+     */
     public function __construct() {
         // empty for now
     }
@@ -23,15 +23,14 @@ class Token{
         $value = md5(uniqid());
         $token_name = TOKENNAME;
         
-        if(Session::exsist($token_name)){
-            Session::destroy();
-        }
+        self::destroy($token_name);
         
         return Session::set($token_name, $value);
     }
     /**
      * 
-     * @return string This will automatically place a hidden inputfield to use for tokens
+     * @return string   This will automatically place a hidden inputfield and 
+     *                  create a session to use for tokens
      */
     public static function input_form(){
         echo "<input type='hidden' name='token' value='". self::generate()."' />";
@@ -51,5 +50,16 @@ class Token{
         }
         
         return FALSE;
+    }
+    
+    public static function destroy($token_name = ""){
+        
+        if(!isset($token_name)){
+            $token_name = TOKENNAME;
+        }
+        
+        if(Session::exsist($token_name)){
+            Session::destroy();
+        }
     }
 }

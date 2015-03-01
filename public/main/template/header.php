@@ -6,10 +6,10 @@
 
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <!-- Le styles -->
-    <link href="<?php URL ?>public/main/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php URL ?>public/main/css/font-awesome.css" rel="stylesheet">
-    <link href="<?php URL ?>public/main/css/navbar.css" rel="stylesheet">
-    <link href="<?php URL ?>public/main/css/sticky-footer.css" rel="stylesheet">
+    <link href="<?php echo URL ?>public/main/css/bootstrap.min.2.3.1.css" rel="stylesheet">
+    <link href="<?php echo URL ?>public/main/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo URL ?>public/main/css/navbar.css" rel="stylesheet">
+    <link href="<?php echo URL ?>public/main/css/sticky-footer.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

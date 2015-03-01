@@ -1,8 +1,8 @@
 <?php 
 if(isset($this->error_call)){
 $error = $this->error_call; 
-};
-//print_r($error);
+}
+
 ?>
 
 
@@ -20,7 +20,7 @@ $error = $this->error_call;
             </label>
         </p>
     </div>
-<?php  }; ?>    
+<?php  } ?>
     
     <input name="loginname" type="text" class="form-control" placeholder="Gebruikersnaam" required autofocus />
     
