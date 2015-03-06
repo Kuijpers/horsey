@@ -35,10 +35,14 @@ class Token{
      * @return boolean
      */
     public static function check(){
-        if ( hash_hmac( 'ripemd160', $_SESSION['csrf'], TOKENHASH ) === $_POST['csrf'] ){
-            return TRUE;
+        if (! hash_hmac( 'ripemd160', $_SESSION['csrf'], TOKENHASH ) === $_POST['csrf'] ){
+            
+            /**
+             * @todo Create redirect to error page with Db registration
+             */
+            echo "iets gaat fout";
+            die();
         }
-        return FALSE;
     }
 
 }

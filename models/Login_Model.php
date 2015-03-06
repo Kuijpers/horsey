@@ -34,17 +34,14 @@ class Login_Model extends Model{
      */
     public function Run(){
         // For debug remove slashes
-            //print_r($_POST);Session::display();die();
-        /**
-         * @todo redirect naar een error pagina met daarbij een DB registratie
-         */
+            //print_r($_POST);die();
         
-        if(!Token::check()){
-            echo "iets gaat fout";
-            die();
-        }
+        Error::Request_Method('POST');
+        
+        Token::check();
+        
         /**
-         * Check DB to see if loginname, password and account exist
+         * Check DB to see if loginname and password exist
          */
         $query =    "SELECT *
                     FROM Login 

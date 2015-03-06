@@ -20,6 +20,16 @@ class Error {
         return $this->_get_errorinfo($error_call);
     }
     
+    public static function Request_Method($request){
+        if(! $_SERVER['REQUEST_METHOD'] === $request){
+            /**
+             * @todo Create redirect to error page with Db registration
+             */
+            echo "iets gaat fout";
+            exit();
+        }
+    }
+    
     private  function _get_errorinfo($error_call){
         
         return $this->db->read('SELECT *
