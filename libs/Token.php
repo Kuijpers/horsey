@@ -13,53 +13,32 @@ class Token{
     public function __construct() {
         // empty for now
     }
+    
     /**
-     * 
-     * @return COOKIE
+     * @return STRING Sequince of hashed characters created from existing csrf-session
      */
     public static function generate(){
-        Session::init();
         
-        $value = md5(uniqid());
-        $token_name = TOKENNAME;
-        
-        self::destroy($token_name);
-        
-        return Session::set($token_name, $value);
+        return hash_hmac( 'ripemd160', $_SESSION['csrf'], TOKENHASH );
     }
+    
     /**
-     * 
      * @return string   This will automatically place a hidden inputfield and 
-     *                  create a session to use for tokens
+     *                  create a hashed string
      */
     public static function input_form(){
-        echo "<input type='hidden' name='token' value='". self::generate()."' />";
-        
+        echo "<input type='hidden' name='csrf' value='". self::generate()."' />";
     }
+    
     /**
-     * 
      * @param type $token
      * @return boolean
      */
-    public static function check($token){
-        $token_name = TOKENNAME;
-        
-        if(Session::exsist($token_name) && $token === Session::get($token_name)){
-            Session::delete($token_name);
+    public static function check(){
+        if ( hash_hmac( 'ripemd160', $_SESSION['csrf'], TOKENHASH ) === $_POST['csrf'] ){
             return TRUE;
         }
-        
         return FALSE;
     }
-    
-    public static function destroy($token_name = ""){
-        
-        if(!isset($token_name)){
-            $token_name = TOKENNAME;
-        }
-        
-        if(Session::exsist($token_name)){
-            Session::destroy();
-        }
-    }
+
 }

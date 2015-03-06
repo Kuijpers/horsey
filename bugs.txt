@@ -4,5 +4,8 @@ When logging in with incorrect password you get back to login page with notifica
 Login in from this page creates an incorrect token or session so you can't login.
 After going back it does have correct token and session so at that time it is possible to login.
 
+Fixed 2015-03-06
+
+With the help of Michiel the CSRF token bug is fixed.
 
 ********************************************************************************

@@ -38,14 +38,9 @@ class Login_Model extends Model{
         /**
          * @todo redirect naar een error pagina met daarbij een DB registratie
          */
-        if(!Token::check($_POST['token'])){
+        
+        if(!Token::check()){
             echo "iets gaat fout";
-            echo "<br />";
-            echo "Session : ";
-            print_r($_SESSION);
-            echo "<br />";
-            echo "Post : ";
-            print_r($_POST);
             die();
         }
         /**
@@ -92,12 +87,10 @@ class Login_Model extends Model{
                 if(isset($_POST['remember']) && $_POST['remember']=='TRUE'){
                     //echo "Set long time"; die();
                     Cookie::cookie_set(COOKIE_LOG_NAME, $data['login_id'],Cookie::Lifetime);
-                    Session::init();
                     Session::set('login_id', $data['login_id']);
                 }else{
                     //echo "Set shorttime"; die();
                     Cookie::cookie_set(COOKIE_LOG_NAME, $data['login_id'],Cookie::Session);
-                    Session::init();
                     Session::set('login_id', $data['login_id']);
                 }
             

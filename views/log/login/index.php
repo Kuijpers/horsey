@@ -2,7 +2,6 @@
 if(isset($this->error_call)){
 $error = $this->error_call; 
 }
-
 ?>
 
 

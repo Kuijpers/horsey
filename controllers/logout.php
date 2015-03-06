@@ -29,7 +29,6 @@ class Logout extends Controller{
         
              if(Cookie::cookie_exists(COOKIE_LOG_NAME)){
                         Cookie::cookie_delete(COOKIE_LOG_NAME);
-                        Session::init();
                         Session::destroy();
                 header('location:'.URL.'index');
                 exit;

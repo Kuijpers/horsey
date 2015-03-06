@@ -18,5 +18,7 @@ define('HASH_PW_KEY', $personal['HASH_PW_KEY']);
 define('HASH_GEN_KEY', $personal['HASH_GEN_KEY']);
 
 // CSRF protection
+define('TOKEN', $personal['TOKEN']);
 define('TOKENNAME',$personal['TOKENNAME']);
+define('TOKENHASH', $personal['TOKENHASH']);
 

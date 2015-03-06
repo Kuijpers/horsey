@@ -1,4 +1,21 @@
 <?php
+// Check if PHP_SESSION is enabled or disabled
+if ( session_status() === PHP_SESSION_DISABLED )
+{
+    throw new RuntimeException( "Cannot start session!" );
+}
+// Check if PHP SESSION is active
+if ( session_status() !== PHP_SESSION_ACTIVE )
+{
+    session_start();
+}
+// Check if SessionID is know in COOKIE
+if ( !empty( $_COOKIE['PHPSESSID'] ) )
+{
+    session_id( $_COOKIE['PHPSESSID'] );
+}
+// FOR DEBUG REMOVE SLASHES
+    //echo '<pre>';print_r( $_SESSION );echo '</pre>';
 
 error_reporting(E_ALL);
 
@@ -21,6 +38,11 @@ require LIBS . 'Form/Val.php';
 spl_autoload_register(function ($class) {
    include LIBS . $class.".php";
 });
+
+// Set CSRF Session token when empty
+if(empty($_SESSION['csrf'])){
+    $_SESSION['csrf']   = TOKEN;
+}
 
 $bootstrap = new Bootstrap();
 
