@@ -14,7 +14,12 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php URL  ?>homepage">Homepage</a></li>
                                             <li><a href="<?php URL  ?>about_us">About us</a></li>
-                                            <li><a href="<?php URL  ?>horses">Horses</a></li>
+                                            <li class="dropdown-submenu"> <a tabindex="-1" href="<?php URL  ?>horses">Horses</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="<?php URL  ?>horses_owned">Owned horses</a></li>
+                                                    <li><a href="<?php URL  ?>horses_friend">Friends horses</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href="<?php URL  ?>for_sale">For Sale</a></li>
                                             <li><a href="<?php URL  ?>links">Links</a></li>
                                         </ul>
