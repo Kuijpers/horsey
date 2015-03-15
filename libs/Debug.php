@@ -23,4 +23,12 @@ class Debug {
     public static function sentence($data){
         echo 'We are in '. $data .'<br />';
     }
+    
+    public static function array_list($data , $alt=''){
+        echo $alt;
+        echo "<pre>"; 
+        print_r($data);
+        echo "</pre>"; 
+        die();
+    }
 }

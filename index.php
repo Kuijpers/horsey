@@ -14,6 +14,7 @@ if ( !empty( $_COOKIE['PHPSESSID'] ) )
 {
     session_id( $_COOKIE['PHPSESSID'] );
 }
+ob_start();
 // FOR DEBUG REMOVE SLASHES
     //echo '<pre>';print_r( $_SESSION );echo '</pre>';
 

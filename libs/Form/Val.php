@@ -113,34 +113,52 @@ class Val{
      *                                      COLUMNNAME => POSTVALUE]
      * @return string Error return if not compared
      */
-    
-    
     public function uniqueInput($data, $val_array=[]){
         
-        // Set empty array
-            $bind_array =[];
-            // Use existing (empty)array to expand array based on $_POST items
-                foreach($val_array[1] as $key => $value){
-                    // Create array to merge
-                    $merge_array = [':'.$key => $_POST[$value]];
-                    // Merge created array to existing array
-                    $bind_array = array_merge($bind_array, $merge_array);  
-                }
+        $bind_array = $this->checkInputBind($val_array);
+        
+        $and_string = $this->checkInputSQL($val_array);
                 
-        // Create SQL query
-            // Set empty start string for the AND part of the query    
-                $and_string = '';
-                // Create string to use for the AND part of the query
-                    foreach ($val_array[1] as $key => $value) {
-                        $and_string .= $key . '= :' . $value . ' AND ';
-                    }
-                    // Trim the last AND of the string
-                        $and_string = rtrim($and_string, ' AND');
+        
         // Built up query
         $sql = 'SELECT * FROM '. $val_array[0] .' WHERE ' . $and_string;
         
+        //Remove for debug
+        //echo "<pre>";print_r($val_array);echo "</pre>";echo "<br />";echo $sql;echo "<br />";echo "<pre>";print_r($bind_array);echo "</pre>";die();
+        
         if(count($this->db->read($sql, $bind_array))> 0){
             return "Registration is not possible";
+        }
+    }
+    /**
+     * existingInput($data,$val_array[])
+     * 
+     * This is to check if the input exists.
+     * Before adding to DB we have to make sure it is possible
+     * 
+     * @param variable $data Not used in this function
+     * @param array $val_array  This is the array needed to check the database
+     *                          Built up:
+     *                          TABLENAME, [COLUMNNAME => POSTVALUE,
+     *                                      COLUMNNAME => POSTVALUE]
+     * @return string Error return if not compared
+     */
+    public function existingInput($data = '', $val_array=[]){
+        
+        $bind_array = $this->checkInputBind($val_array);
+        
+        $and_string = $this->checkInputSQL($val_array);
+                
+        // Built up query
+        $sql = 'SELECT * FROM '. $val_array[0] .' WHERE ' . $and_string;
+        if(!count($this->db->read($sql, $bind_array))== 1){
+            return "Registration is not possible";
+        }
+    }
+    
+    public function isInArray($data , $array = []){
+        if(!in_array($data, $array)){
+            return "Value does not exist in array";
         }
     }
     /**
@@ -153,6 +171,57 @@ class Val{
     public function __call($name, $arguments) {
         throw new Exception("$name does not exist inside of: " . __CLASS__);
     }
+    /**
+     * Create a array that can vbe used to bind parameters
+     * @param ARRAY $val_array Current array
+     * @return ARRAY Bindarray to use in SQL statement
+     */
+    private function checkInputBind($val_array=[]){
+        // Set empty array
+            $bind_array =[];
+            // Use existing (empty)array to expand array based on $_POST items
+                foreach($val_array[1] as $key => $value){
+                    // Create array to merge
+                    $merge_array = [':'.$key => $_POST[$value]];
+                    // Merge created array to existing array
+                    $bind_array = array_merge($bind_array, $merge_array);  
+                }
+            // Get the ignore binding parameters
+                if(!empty($val_array[2])){
+                    foreach($val_array[2] as $key => $value){
+                        // Create array to merge
+                        $merge_array = [':'.$key => $_POST[$value]];
+                        // Merge created array to existing array
+                        $bind_array = array_merge($bind_array, $merge_array);  
+                    }
+                }
+                return $bind_array;
+    }
+    /**
+     * This will complete the SQL statement for look up
+     * @param ARRAY $val_array Current array
+     * @return STRING Output to use in SQL statement
+     */
+    private function checkInputSQL($val_array=[]){
+        // Create SQL query
+            // Set empty start string for the AND part of the query    
+                $and_string = '';
+                // Create string to use for the AND part of the query
+                    foreach ($val_array[1] as $key => $value) {
+                        $and_string .= $key . '= :' . $value . ' AND ';
+                    }
+                    // Trim the last AND of the string
+                $and_string = rtrim($and_string, ' AND');
+                
+                if(!empty($val_array[2])){
+                    foreach ($val_array[2] as $key => $value) {
+                        $and_string .= ' AND '. $key . ' <> :' . $value ;
+                    }
+                }
+                
+        return $and_string;
+    }
+    
     
     
                     /**
