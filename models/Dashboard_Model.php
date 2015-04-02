@@ -19,7 +19,7 @@ class Dashboard_Model extends Model{
     function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
             
-        Debug::sentence("dashboard model");
+        //Debug::sentence("dashboard model");
     }
 }
 

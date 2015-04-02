@@ -20,7 +20,7 @@ class Dashboard extends Controller{
     public function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
         
-            Debug::sentence("dashboard controller");
+            //Debug::sentence("dashboard controller");
         //Cookie::cookie_display();die();
         
         /**
