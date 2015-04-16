@@ -5,4 +5,4 @@ test/
 config/personal.php
 HorseyCMS.mwb
 HorseyCMS.mwb.bak
-/public/dashboard/template/all.php
+database.sql

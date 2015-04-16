@@ -19,7 +19,35 @@
     <link href="<?php //echo URL ?>../public/dashboard/css/nav-dropdown.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/admin-nav.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/sticky-footer.css" rel="stylesheet">
-   
+    
+    <!-- Added CSS options -->
+    <?php
+        /*
+         *  Use a predefined .css file set in the controller.
+         *  @param string $css This is the path set in the controler to the .css file
+         */
+        if(isset($this->css)){
+            foreach($this->css as $css){
+                echo '<link rel="stylesheet" type="text/css" href="' .URL. 'public/dashboard/css/'.$css.'"/>';
+            }
+        }
+    ?>
+    
+    
+    <!-- Added JS options -->
+    <?php
+        /*
+         *  Use a predefined .js file set in the controller.
+         *  @param string $js This is the path set in the controler to the .js file
+         */
+        if(isset($this->js)){
+            foreach($this->js as $js){
+                echo '<script type="text/javascript" src="'.URL.'public/dashboard/js/'.$js.'"></script>';
+            }
+        }
+    ?>
+    
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

@@ -30,7 +30,14 @@ class Dashboard extends Controller{
         
         Logged::check_logged();
         
-            
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];   
         
     }
     

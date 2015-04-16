@@ -27,7 +27,16 @@ class Admin_settings extends Controller{
          * Check if user is already logged in. If not redirect to loginpage.
          *
          */
-        Logged::check_logged();   
+        Logged::check_logged(); 
+        
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];  
     }
     /**
      *  index() Standard displayed page when entering admin_settings
@@ -44,6 +53,14 @@ class Admin_settings extends Controller{
           $this->view->active = 'dashboard';
           $this->view->show_usersdata = $this->model->show_usersdata();
           $this->view->render('admin_settings/index', 'dashboard');
+    }
+    
+    public function useradd(){
+          $this->view->title = 'Dashboard - Admin settings - User Add';
+          $this->view->topactive = 'dashboard';
+          $this->view->active = 'dashboard';
+          $this->view->show_enum = $this->model->show_enum();
+          $this->view->render('admin_settings/useradd', 'dashboard');
     }
     /**
      *  userupdate() Standard displayed page used to update a user
@@ -64,6 +81,15 @@ class Admin_settings extends Controller{
           $this->view->show_enum = $this->model->show_enum();
           $this->view->render('admin_settings/userupdate', 'dashboard'); 
     }
+    
+    public function usercreate(){
+        Error::Request_Method('POST');
+        Token::check();
+            // For debug remove slashes
+                Debug::array_list($_POST, "This is the \$_POST list");
+        $enum = $this->enum();
+                
+    }
     /**
      * userrenew() Make sure data will be correctly renewed in DB
      * 
@@ -81,7 +107,7 @@ class Admin_settings extends Controller{
         /**
          * Get the enum options from database for comparing
          */ 
-        $enum = $this->model->show_enum();
+        $enum = $this->enum();
         try{
             $form = new Form;
                 // Validate the POST variables
@@ -90,11 +116,11 @@ class Admin_settings extends Controller{
                             -> val('existingInput' , ['User',['user_id' => 'user_id']])
                         -> post('user_firstname')
                             -> val('required')
-                            -> val('minlength', '6')
+                            -> val('minlength', '3')
                             -> val('maxlength', '45')
                         -> post('user_lastname')
                             -> val('required')
-                            -> val('minlength', '6')
+                            -> val('minlength', '3')
                             -> val('maxlength', '45')
                         -> post('user_adress')
                             -> val('required')
@@ -127,7 +153,7 @@ class Admin_settings extends Controller{
                             -> val('existingInput' , ['Login',['login_id' => 'login_id']])
                         -> post('login_name')
                             -> val('required')
-                            -> val('minlength', '6')
+                            -> val('minlength', '3')
                             -> val('maxlength', '45')
                             -> val('uniqueInput' , ['Login',
                                                     ['login_name' => 'login_name'],
@@ -144,13 +170,17 @@ class Admin_settings extends Controller{
             // Remove slashes for debug
                 //Debug::array_list($data, "The form has passed for further processing aka entering DB");
                 if($this->model->update($data)){
-                    Session::set('correct', 'Update is executed succesfully !!');
+                    Session::set('updated', 'Update is executed succesfully !!');
                     header('location:' . URL . 'admin_settings');
                     die();
                 }           
         } catch (Exception $error) {
             echo $error->getMessage();
         }
+    }
+    
+    private function enum(){
+        return $this->model->show_enum();
     }
     
     

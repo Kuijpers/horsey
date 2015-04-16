@@ -1,22 +1,26 @@
 <?php
     $userdata = $this->show_usersdata;
+    
+?>
 
+<h3> Users </h3>
+<hr>
+<?php
     if(Session::exsist('owner')){
         echo "<div class='btn-danger'><p><center>";
         echo Session::get('owner');
         echo "</center></p></div>";
         Session::delete('owner');
     }
-    if(Session::exsist('correct')){
+    if(Session::exsist('updated')){
         echo "<div class='btn-success'><p><center>";
-        echo Session::get('correct');
+        echo Session::get('updated');
         echo "</center></p></div>";
-        Session::delete('correct');
+        Session::delete('updated');
     }
-    
+    // Remove slashes for debug
+       //Debug::array_list($userdata);
 ?>
-<h3> Users </h3>
-<hr>
 <table class="table table-striped">
     <thead>
         <th>ID</th>
@@ -29,7 +33,7 @@
         <th>Country</th>
         <th>Telephone</th>
         <th>Email</th>
-        <th>Login_id</th>
+        <th>Usertype</th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
@@ -46,7 +50,7 @@
                     echo "      <td>". $value['user_country']  ."</td>\n";
                     echo "      <td>". $value['user_telephone']  ."</td>\n";
                     echo "      <td>". $value['user_email']  ."</td>\n";
-                    echo "      <td>". $value['Login_login_id']  ."</td>\n";
+                    echo "      <td>". ucfirst($value['login_usertype'])  ."</td>\n";
                     echo "      <td><a class='btn btn-default' role='button' href='". URL ."admin_settings/userupdate/". $value['Login_login_id']  ."'>Update</a></td>\n";
                     echo "</tr>\n";
                    }

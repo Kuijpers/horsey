@@ -51,8 +51,35 @@ CREATE TABLE IF NOT EXISTS `Login` (
 INSERT INTO `Login` (`login_id`, `login_name`, `login_password`, `login_usertype`, `login_firstlog`, `login_verification`) VALUES
 	(1, 'beheer', '4b677e345357a0015de0601c75b1b5451e9be6a4c8e8409d06885f7241044ab8', 'owner', 1, '0'),
 	(2, 'admin', '4b677e345357a0015de0601c75b1b5451e9be6a4c8e8409d06885f7241044ab8', 'admin', 1, '0'),
-	(3, 'dennis', '4b677e345357a0015de0601c75b1b5451e9be6a4c8e8409d06885f7241044ab8', 'user', 1, '0');
+	(3, 'denniske', '4b677e345357a0015de0601c75b1b5451e9be6a4c8e8409d06885f7241044ab8', 'user', 1, '0');
 /*!40000 ALTER TABLE `Login` ENABLE KEYS */;
+
+
+-- Structuur van  tabel horsey.User wordt geschreven
+CREATE TABLE IF NOT EXISTS `User` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_lastname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_adress` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_postcode` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_state` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_country` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_telephone` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `Login_login_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `Login_login_id_UNIQUE` (`Login_login_id`),
+  KEY `fk_User_Login_idx` (`Login_login_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Dumpen data van tabel horsey.User: 3 rows
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` (`user_id`, `user_firstname`, `user_lastname`, `user_adress`, `user_postcode`, `user_city`, `user_state`, `user_country`, `user_telephone`, `user_email`, `Login_login_id`) VALUES
+	(1, 'Fakefirst 1', 'Fakelast 1', 'Fakeadres 1', 'post 1', 'Fakecity 1', NULL, 'Netherlands', '06-12345678', 'fake1@gmail.com', 1),
+	(2, 'Fakefirst 2', 'Fakelast 2', 'Fakeadres 2', 'post 2', 'Fakecity 2', '', 'Netherlands', '06-87654321', 'fake2@hotmail.com', 2),
+	(3, 'Fakefirst 3', 'Fakelast 3', 'Fakeadres 3', 'post 3', 'Fakecity 3', '', 'Netherlands', '06-23456789', 'fake3@gmail.com', 3);
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
