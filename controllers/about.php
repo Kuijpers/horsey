@@ -19,6 +19,16 @@ class About extends Controller{
         parent::__construct(); // Insert __construct method from Class controller
         
             Debug::sentence("about controller");
+            
+                    
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];
         
     }
     

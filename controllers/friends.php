@@ -20,6 +20,15 @@ class Friends extends Controller{
         
             Debug::sentence("friends controller");
         
+                    
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];
     }
     
     /**

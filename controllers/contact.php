@@ -18,7 +18,16 @@ class Contact extends Controller{
     function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
         
-            Debug::sentence("contact controller");
+            Debug::sentence("contact controller");  
+            
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];
         
     }
     

@@ -22,7 +22,15 @@ class Error extends Controller{
             
                 
                 $this->view->render('error/index');
-        
+                
+        // Custom JS files
+//        $this->view->js = ['toggle.js'
+//                           //, 'pietje.js'
+//                          ];
+//        // Custom CSS files
+//        $this->view->css = ['toggle.css'
+//                            //, 'pietje.css'
+//                           ];
     }
     
     /**

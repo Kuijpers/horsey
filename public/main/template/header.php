@@ -10,6 +10,34 @@
     <link href="<?php echo URL ?>public/main/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/main/css/navbar.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/main/css/sticky-footer.css" rel="stylesheet">
+    
+    
+    <!-- Added CSS options -->
+    <?php
+        /*
+         *  Use a predefined .css file set in the controller.
+         *  @param string $css This is the path set in the controler to the .css file
+         */
+        if(isset($this->css)){
+            foreach($this->css as $css){
+                echo '<link rel="stylesheet" type="text/css" href="' .URL. 'public/main/css/'.$css.'"/>';
+            }
+        }
+    ?>
+    
+    
+    <!-- Added JS options -->
+    <?php
+        /*
+         *  Use a predefined .js file set in the controller.
+         *  @param string $js This is the path set in the controler to the .js file
+         */
+        if(isset($this->js)){
+            foreach($this->js as $js){
+                echo '<script type="text/javascript" src="'.URL.'public/main/js/'.$js.'"></script>';
+            }
+        }
+    ?>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
