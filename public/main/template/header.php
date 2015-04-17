@@ -52,6 +52,15 @@
 
 </head>
 
+    <noscript>
+        <style type="text/css">
+            .container {display:none};
+        </style>
+        <div class="noscriptmessage">
+            This website requires JavaScript to be enabled.
+        </div>
+    </noscript>
+
 <body>
 <div class="container">
 
