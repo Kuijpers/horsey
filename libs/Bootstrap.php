@@ -20,6 +20,10 @@ class Bootstrap{
         private $_modelPath = 'models/'; // Always include trailing slash (/)
         private $_errorFile = 'error.php';
         private $_defaultFile = 'index.php';
+        private $_defaultModelFile = 'Index_Model.php';
+        
+        private $_mainPath = 'index/index/';
+        private $_subPath = '/index/';
     
     /**
      *  function __construct will automatically generate when method is called 
@@ -45,7 +49,7 @@ class Bootstrap{
             $this->_modelPath = trim($path, '/') . '/';
         }
         /**
-         * (Optional) Set a custom path to the error file
+         * (Optional) Set a custom path to the default file
          * @param string $path use the file name only of your controller Example: index.php
          */
         public function setDefaultFile($path){
@@ -74,13 +78,60 @@ class Bootstrap{
 
             // Check if url is set. If not, load the default controller and break down remaining script.  
             // Example: Visit http://localhost  it loads the default controller
+            // 
+            // www.bla.com/
+            
             if(empty($this->_url[0])){
                 $this->_loadDefaultController();
                 return false;
             }
-
+            // Check if folder exists
+            // 
+            // www.bla.com/folder1/
+            
+            if(!file_exists($this->_controllerPath . $this->_url[0])){
+                //die("Deze folder bestaat niet");
+                $this->_error();
+                return FALSE;
+            }
+            // Check if subfolder is set.
+            // If not go to standard subfolder
+            // 
+            // www.bla.com/folder1/
+            
+            if(empty($this->_url[1])){
+                $this->_loadSubController();
+                return FALSE;
+            }
+            
+            // Check if folder exists
+            // 
+            // www.bla.com/folder1/folder2/
+            
+            if(!file_exists($this->_controllerPath . $this->_url[0] .'/'.$this->_url[1])){   
+                //die("Deze folder bestaat niet");
+                $this->_error();
+                return FALSE;
+            }
+            // Check if method is set.
+            // If not go to standard method
+            // 
+            // www.bla.com/folder1/folder2/
+            
+            if(empty($this->_url[2])){
+                //die("Er is geen method geplaatst");
+                $this->_loadMainController();
+                return FALSE;
+            }  
+            // If method is set.
+            // 
+            // www.bla.com/folder1/folder2/method
 
                 $this->_loadExistingController();
+                
+            // If parameters are set.
+            // 
+            // www.bla.com/folder1/folder2/method/1/2/3/4
 
                 $this->_callControllerMethode();
         }
@@ -98,7 +149,7 @@ class Bootstrap{
              * @param array $url Exploded array from $_GET['url']==> result
              */
             
-            $url = isset($_GET['url']) ? $_GET['url'] : 'Index';
+            $url = isset($_GET['url']) ? $_GET['url'] : '';
             $url = rtrim($url, '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $this->_url = explode('/',$url);
@@ -110,8 +161,36 @@ class Bootstrap{
             /**
              * Require file and after that break down remaining script
              */
-            require $this->_controllerPath . $this->_defaultFile;  
+            require $this->_controllerPath .$this->_mainPath .  $this->_defaultFile;
             $this->_controller = new Index();
+            $this->_controller->index();
+            $this->_controller->loadModel('Index', $this->_modelPath .$this->_mainPath );
+            return FALSE;            
+        }
+        /**
+         * Loads if there is no sub folder passed
+         */
+        private function _loadSubController(){
+            /**
+             * Require file and after that break down remaining script
+             */
+            require $this->_controllerPath . $this->_url[0] . $this->_subPath .  $this->_defaultFile;  
+            require $this->_modelPath . $this->_url[0] . $this->_subPath .  $this->_defaultModelFile;  
+            $this->_controller = new Index();
+            $this->model = new Index_Model();
+            $this->_controller->index();
+            return FALSE;            
+        }
+        /**
+         * Loads if there is no method passed
+         */
+        private function _loadMainController(){
+            /**
+             * Require file and after that break down remaining script
+             */
+            require $this->_controllerPath . $this->_url[0] ."/".  $this->_url[1] ."/". $this->_defaultFile;
+            $this->_controller = new Index();
+            $this->_controller->loadModel('index', $this->_modelPath . $this->_url[0] ."/".  $this->_url[1] ."/");
             $this->_controller->index();
             return FALSE;            
         }
@@ -128,12 +207,13 @@ class Bootstrap{
              *
              * @param string $this->_controller Open new methode ( vissible page )
              */
-            $file = $this->_controllerPath . $this->_url[0] . '.php';
+            $file = $this->_controllerPath . $this->_url[0] ."/".  $this->_url[1] ."/". $this->_url[2] . '.php';
         
             if (file_exists($file)){
                 require $file;
-                $this->_controller = new $this->_url[0];
-                $this->_controller->loadModel($this->_url[0], $this->_modelPath);
+                $this->_controller = new $this->_url[2];
+                $this->_controller->loadModel($this->_url[2], $this->_modelPath . $this->_url[0] ."/".  $this->_url[1] ."/");
+                //$this->_controller->{$this->_url[3]}();
             }
             else{
                 $this->_error();
@@ -143,44 +223,54 @@ class Bootstrap{
         }
         /**
          * If a method is passed in the $_GET parameter
-         *  http://localhost/Controller/Methode/(Param)/(Param)/(Param)
-         *   url[0] = Controller
-         *   url[1] = Method  case(2)
-         *   url[2] = Param   case(3)
-         *   url[3] = Param   case(4)
+         *  http://localhost/Folder1/Folder2/Controller/Methode/(Param)/(Param)/(Param)
+         *   url[0] = Folder 1
+         *   url[1] = Folder 2
+         *   url[2] = Controller
+         *   url[3] = Method
          *   url[4] = Param   case(5)
+         *   url[5] = Param   case(6)
+         *   url[6] = Param   case(7)
+         *   url[7] = Param   case(8)
          */
         private function _callControllerMethode(){
             
             $length = count($this->_url);
             
             // Make sure the method we are calling exists.
-            if($length > 1){
-                if (!method_exists($this->_controller, $this->_url[1])) {
+            if($length > 3){
+                if (!method_exists($this->_controller, $this->_url[3])) {
                     $this->_error();
                     die;
                 }
-            }
+            }   
+                // Remove slashes for debug
+                    //print_r($this->_url);echo "De lengte van de url is : ". $length . " " ;die("We kunnen verder. Method bestaat");
             // Determine what to load
             switch ($length){
-                case 5:
+                case 8:
+                        //Controller->Method(Param1, Param2, Param3, Param4)
+                        $this->_controller ->{$this->_url[3]}($this->_url[4], $this->_url[5], $this->_url[6], $this->_url[7]);
+                    break;
+                case 7:
                         //Controller->Method(Param1, Param2, Param3)
-                        $this->_controller ->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
+                        $this->_controller ->{$this->_url[3]}($this->_url[4], $this->_url[5], $this->_url[6]);
+                    break;
+                case 6:
+                        //Controller->Method(Param1, Param2)
+                        $this->_controller ->{$this->_url[3]}($this->_url[4], $this->_url[5]);
+                    break;
+                case 5:
+                        //Controller->Method(Param1)
+                        $this->_controller ->{$this->_url[3]}($this->_url[4]);
                     break;
                 case 4:
-                        //Controller->Method(Param1, Param2)
-                        $this->_controller ->{$this->_url[1]}($this->_url[2], $this->_url[3]);
-                    break;
-                case 3:
-                        //Controller->Method(Param1)
-                        $this->_controller ->{$this->_url[1]}($this->_url[2]);
-                    break;
-                case 2:
                         //Controller->Method()
-                        $this->_controller ->{$this->_url[1]}();
+                        $this->_controller ->{$this->_url[3]}();
                     break;
                 default:
-                     $this->_controller->index();
+                        //Controller->Method()
+                        $this->_controller ->index();
                     break;
             }
         }

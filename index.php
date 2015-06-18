@@ -22,16 +22,16 @@ error_reporting(E_ALL);
 
 //echo "DIT IS DE INDEX PAGINA";
 
-require 'config/personal.php';
-require 'config/db.php';
-require 'config/login.php';
-require 'config/mail.php';
-require 'config/security.php';
-require 'config/url.php';
-/**
- * @todo Put this requirement somewhere else so it will not be called all the time
- */
-require LIBS . 'Form/Val.php';
+// Path to folder with configuration files.
+$path = 'config/';
+
+require_once $path . 'personal.php';
+
+// Require all files from the config folder
+
+foreach(glob($path."*.php") as $file){
+    require_once $file;
+}
 
 /**
  * Load classes from libs

@@ -49,6 +49,12 @@ class View{
                 require 'public/login/template/header.php';
                 require 'views/log/' . $name . '.php';
                 require 'public/login/template/footer.php';
+            break;
+            case 'verify':
+        
+                require 'public/dashboard/verification/template/header.php';
+                require 'views/dashboard/' . $name . '.php';
+                require 'public/dashboard/verification/template/footer.php';
             
             break;
             default:

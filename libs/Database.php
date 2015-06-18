@@ -56,9 +56,9 @@ class Database extends PDO {
      * 
      * @return integer Last inserted ID
      */
-    public function lastId(){
+    public function lastId($name = null){
         
-        return $this->lastInsertId();
+        return $this->lastInsertId($name);
         
     }
     
@@ -132,5 +132,14 @@ class Database extends PDO {
     
     public function delete($table, $where, $limit = 1){
         return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+    }
+    /**
+     * 
+     * @param STRING $SQL Statement to use for deleting the data
+     * @param STRING $where What rows need to be deleted
+     * @return INT Affected rows
+     */
+    public function delete_multi($SQL, $where){
+        return $this->exec("DELETE $SQL WHERE $where");
     }
 } // End of class

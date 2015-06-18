@@ -1,3 +1,37 @@
+<?php
+use DKW\Tracking\Logged as Logged;
+use DKW\Tracking\Session as Session;
+
+        /**
+         * Check if user is already logged in. If not redirect to loginpage.
+         *
+         */
+        if(Logged::check_logged()){ 
+            if(! Session::exsist('login_id')){
+                $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+                $query ="SELECT User.*,  Login.*
+                                FROM Login
+                                JOIN User ON 
+                                Login.login_id = User.Login_login_id
+                                and 
+                                Login.login_id = :login_id "; 
+                $array = [ ':login_id' => $_COOKIE[COOKIE_LOG_NAME]];
+                // Get the information
+                $data = $this->db->read($query, $array);
+                
+                // Remove slashes for debug. After removal logout and login again
+                    //echo "<pre>";print_r($data);echo "</pre>"; die();
+                
+                Session::set('login_id', $data[0]['login_id']);
+                Session::set('login_usertype', $data[0]['login_usertype']);
+                Session::set('login_status', $data[0]['login_status']);
+                Session::set('user_firstname', $data[0]['user_firstname']);
+                Session::set('user_lastname', $data[0]['user_lastname']);
+                Session::set('user_email', $data[0]['user_email']);
+            }
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,9 +48,12 @@
     <!-- Core CSS styles -->
     <link href="<?php echo URL ?>public/dashboard/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- Core JS styles -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="<?php echo URL ?>public/dashboard/js/bootstrap.js"></script>
     
     <!-- Theme files -->
-    <link href="<?php //echo URL ?>../public/dashboard/css/nav-dropdown.css" rel="stylesheet">
+    <link href="<?php echo URL ?>public/dashboard/css/nav-dropdown.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/admin-nav.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/sticky-footer.css" rel="stylesheet">
     

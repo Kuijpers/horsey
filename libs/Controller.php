@@ -20,6 +20,7 @@ class Controller{
         
         $this->view = new View();
         
+        
     }
     
     /**
@@ -43,12 +44,13 @@ class Controller{
         $path = $model_path . $name. '_model.php';
         
         if(file_exists($path)){
+            //die($model_path . $name. '_model.php');
             require $model_path . $name. '_model.php';
             
-            $modelName = $name. '_Model';
-            $this->model = new $modelName();
+            $modelName = ucfirst($name). '_Model';
+            //die($modelName);
+            $this->model = new $modelName();        
         }
-        
-    }
     
+    }
 }

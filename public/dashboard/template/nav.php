@@ -1,3 +1,7 @@
+<?php
+use DKW\Tracking\Session as Session;
+?>
+
 <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -10,45 +14,51 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<?php echo URL  ?>dashboard/"><span class="glyphicon glyphicon-home"></span>Dashboard</a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <li <?php if($this->firstactive == 'dashboard'){echo 'class="active"';}  ?> ><a href="<?php echo URL  ?>dashboard/"><span class="glyphicon glyphicon-home"></span>Dashboard</a></li>
+                <li class="dropdown <?php if($this->firstactive == 'widgets'){echo 'active';}  ?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-list-alt"></span>Widgets <b class="caret"></b></a>
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a href="<?php echo URL  ?>homepage">Homepage</a></li>
-                        <li><a href="<?php echo URL  ?>about_us">About us</a></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Horses</a>
+                        <li class="<?php if($this->secondactive == 'homepage'){echo 'active';}  ?>" ><a href="<?php echo URL  ?>dashboard/homepage">Homepage</a></li>
+                        <li class="<?php if($this->secondactive == 'about_us'){echo 'active';}  ?>" ><a href="<?php echo URL  ?>dashboard/about">About us</a></li>
+                        <li class="dropdown-submenu <?php if($this->secondactive == 'horses_overview'){echo 'active';}  ?>">
+                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/horses">Horses</a>
                                 <ul class="dropdown-menu">
-                                  <li><a tabindex="-1" href="<?php echo URL  ?>horses">Overview horses</a></li>
-                                  <li><a href="<?php echo URL  ?>horses_owned">Owned horses</a></li>
-                                  <li><a href="<?php echo URL  ?>horses_friend">Friend horses</a></li>
+                                  <li class="<?php if($this->thirdactive == 'horses_overview'){echo 'active';}  ?>" ><a tabindex="-1" href="<?php echo URL  ?>dashboard/horses">Overview horses</a></li>
+                                  <li class="<?php if($this->thirdactive == 'horses_owned'){echo 'active';}  ?>" ><a href="<?php echo URL  ?>dashboard/horses/owned">Owned horses</a></li>
+                                  <li class="<?php if($this->thirdactive == 'horses_friend'){echo 'active';}  ?>" ><a href="<?php echo URL  ?>dashboard/horses/friend">Friend horses</a></li>
                                 </ul>
                         </li>
                         <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">For sale</a>
+                        <li class="dropdown-submenu <?php if($this->secondactive == 'sale'){echo 'active';}  ?>">
+                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/sale">For sale</a>
                                 <ul class="dropdown-menu">
-                                  <li><a tabindex="-1" href="<?php echo URL  ?>for_sale">Overview</a></li>
-                                  <li><a href="#">Horses</a></li>
-                                  <li><a href="#">Equipment</a></li>
+                                  <li <?php if($this->thirdactive == 'sale'){echo 'class="active"';}  ?>><a tabindex="-1" href="<?php echo URL  ?>dashboard/sale">Overview</a></li>
+                                  <li <?php if($this->thirdactive == 'horses_sale'){echo 'class="active"';}  ?>><a href="<?php echo URL  ?>dashboard/sale/horses">Horses</a></li>
+                                  <li <?php if($this->thirdactive == 'equipment_sale'){echo 'class="active"';}  ?>><a href="<?php echo URL  ?>dashboard/sale//equipment">Equipment</a></li>
                                 </ul>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo URL  ?>links">Links</a></li>
+                        <li  <?php if($this->secondactive == 'links'){echo 'class="active"';}  ?>><a href="<?php echo URL  ?>dashboard/links">Links</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                <li class="dropdown <?php if($this->firstactive == 'settings'){echo 'active';}  ?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
                     class="glyphicon glyphicon-cog"></span>Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo URL  ?>contact_settings">Contact</a></li>
+                        <li <?php if($this->secondactive == 'contact'){echo 'class="active"';}  ?>><a href="<?php echo URL  ?>dashboard/contact">Contact</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo URL  ?>breed_settings">Breeding</a></li>
-                        <li><a href="#">For Sale</a></li>
+                        <li <?php if($this->secondactive == 'breeding'){echo 'class="active"';}  ?>><a href="<?php echo URL  ?>dashboard/breeding">Breeding</a></li>
+                        <li><a href="<?php echo URL  ?>dashboard/sale/settings">For Sale</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo URL  ?>admin_settings/">Admin</a></li>
+                        <li class="dropdown-submenu <?php if($this->secondactive == 'admin'){echo 'active';}  ?>">
+                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/admin/">Admin</a>
+                                <ul class="dropdown-menu">
+                                  <li class="<?php if($this->thirdactive == 'users'){echo 'active';}  ?>"><a tabindex="-1" href="<?php echo URL  ?>dashboard/users">Users</a></li>
+                                  <li><a href="<?php echo URL  ?>dashboard/#">Empty for now</a></li>
+                                </ul>
+                        </li>
                     </ul>
                 </li>
-                <li><a href="#"><span class="glyphicon glyphicon-calendar"></span>Calendar</a></li>
+                <li class=<?php if($this->firstactive == 'calendar'){echo 'active';}  ?>><a href="#"><span class="glyphicon glyphicon-calendar"></span>Calendar</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
                     class="glyphicon glyphicon-search"></span>Search <b class="caret"></b></a>
                     <ul class="dropdown-menu" style="min-width: 300px;">
@@ -83,8 +93,8 @@
                         <li><a href="#" class="text-center">View All</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
+                <li class="dropdown <?php if($this->firstactive == 'userarea'){echo 'active';}  ?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                    class="glyphicon glyphicon-user"></span><?php echo Session::get('user_firstname')." ".Session::get('user_lastname'). " <b>[</b> " . ucfirst(Session::get('login_usertype')). " <b>]</b> " ; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
