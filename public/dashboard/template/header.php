@@ -1,6 +1,9 @@
 <?php
 use DKW\Tracking\Logged as Logged;
 use DKW\Tracking\Session as Session;
+use DKW\Language\Language as Language;
+
+$default_language = $this->general_settings[0]['value'];
 
         /**
          * Check if user is already logged in. If not redirect to loginpage.
@@ -28,6 +31,7 @@ use DKW\Tracking\Session as Session;
                 Session::set('user_firstname', $data[0]['user_firstname']);
                 Session::set('user_lastname', $data[0]['user_lastname']);
                 Session::set('user_email', $data[0]['user_email']);
+                Session::set('user_language', $data[0]['user_language']);
             }
         }
 ?>
@@ -56,6 +60,22 @@ use DKW\Tracking\Session as Session;
     <link href="<?php echo URL ?>public/dashboard/css/nav-dropdown.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/admin-nav.css" rel="stylesheet">
     <link href="<?php echo URL ?>public/dashboard/css/sticky-footer.css" rel="stylesheet">
+    
+    <!-- Require language files -->
+    <?php
+    if(isset($this->language)){
+        $language= $this->language['language'];
+        $path = $this->language['path'];
+        $required_files = $this->language['required_files'];
+        
+        if(!isset($lang)){$lang = [];}
+        $lang = Language::get_lang_files($language, $path, $required_files, $lang);
+        
+    }else{
+        echo 'ERROR!! No language files are set.';
+        die();
+    }
+    ?>
     
     <!-- Added CSS options -->
     <?php

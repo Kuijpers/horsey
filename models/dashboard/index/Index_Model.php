@@ -1,9 +1,9 @@
 <?php
 /**
- * Description of Index_Model
+ * Description of Dashboard_Model
  * 
  * This class is an extension of the Model class
- * Within this class we handle the data needed for the index page
+ * Within this class we handle the data needed for the Links page
  * 
  *
  * @author Dennis Kuijpers
@@ -17,10 +17,8 @@ class Index_Model extends Model{
      */
     
     function __construct(){
+        parent::__construct(); // Insert __construct method from Class controller
             
-        //Debug::sentence("New dashboard index model");
+        //Debug::sentence("Dashboard model");
     }
 }
-
-
-?>

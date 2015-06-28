@@ -61,6 +61,18 @@ class Add extends Controller{
 //        $this->view->css = ['toggle.css'
 //                            //, 'pietje.css'
 //                           ];  
+        
+        // Require language files
+        $this->view->language = ['language' => $_SESSION['user_language']
+                                 ,'path'=> 'dashboard'
+                                 ,'required_files'=>['default'
+                                                     ,'cookie'
+                                                     ,'session'
+                                                     ,'error'
+                                                     ,'navigation'
+                                                     ,'users']
+            
+        ];
        
 // Class settings
         $this->_error = new Error();
@@ -83,6 +95,7 @@ class Add extends Controller{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->general_settings = $this->model->get_general_settings();
           $this->view->show_enum = $this->model->show_enum('Login', 'login_usertype');
           $this->view->pagepath = $this->pagepath;
           $this->view->render($this->viewpath.'add', $this->setup);

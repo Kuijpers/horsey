@@ -13,6 +13,26 @@
  */
 class Index extends Controller{
     
+// Setting the variables    
+    
+// The main page used for this controller
+    private $pagepath = 'dashboard/settings/'; // Always provide a trailing slash ( '/' ) at the end !!!
+    
+// The view used for this page
+    private $viewpath = 'settings/'; // Always provide a trailing slash ( '/' ) at the end !!!
+    
+// Setup needed for this page
+    private $setup = 'dashboard';
+    
+// Basic for the page title
+    private $pagetitle = 'Dashboard - Settings - '; // Always provide space dash space ( ' - ' ) at the end!!!
+    
+// This is ment for the navigation to show the active status.
+    public $firstactive = 'settings';
+    private $secondactive = '';
+    private $thirdactive = '';
+    private $fourthactive = '';
+    
     /**
      *  function __construct will automatically generate when method is called
      */
@@ -20,7 +40,7 @@ class Index extends Controller{
     public function __construct(){
         parent::__construct(); // Insert __construct method from Class controller
         
-            Debug::sentence("Settings controller");
+            //Debug::sentence("Settings controller");
         //Cookie::cookie_display();die();
                 
         // Custom JS files
@@ -31,6 +51,18 @@ class Index extends Controller{
 //        $this->view->css = ['toggle.css'
 //                            //, 'pietje.css'
 //                           ];
+        
+        // Require language files
+        $this->view->language = ['language' => $_SESSION['user_language']
+                                 ,'path'=> 'dashboard'
+                                 ,'required_files'=>['default'
+                                                     ,'cookie'
+                                                     ,'session'
+                                                     ,'error'
+                                                     ,'navigation'
+                                                        ]
+            
+        ];
         
             
         
@@ -47,10 +79,14 @@ class Index extends Controller{
      */
     
     public function index(){
-          $this->view->title = 'Dashboard - Settings';
-          $this->view->topactive = 'dashboard';
-          $this->view->active = 'dashboard';
-          $this->view->render('settings/index', 'dashboard'); 
+          $this->view->title = $this->pagetitle .'Default';
+          $this->view->firstactive = $this->firstactive;
+          $this->view->secondactive = $this->secondactive;
+          $this->view->thirdactive = $this->thirdactive;
+          $this->view->fourthactive = $this->fourthactive;
+          $this->view->general_settings = $this->model->get_general_settings();
+          $this->view->pagepath = $this->pagepath;
+          $this->view->render($this->viewpath.'index', $this->setup);
     }
     
 }

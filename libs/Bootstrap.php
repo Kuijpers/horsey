@@ -174,10 +174,9 @@ class Bootstrap{
             /**
              * Require file and after that break down remaining script
              */
-            require $this->_controllerPath . $this->_url[0] . $this->_subPath .  $this->_defaultFile;  
-            require $this->_modelPath . $this->_url[0] . $this->_subPath .  $this->_defaultModelFile;  
+            require $this->_controllerPath . $this->_url[0] . $this->_subPath .  $this->_defaultFile;
             $this->_controller = new Index();
-            $this->model = new Index_Model();
+            $this->_controller->loadModel('index', $this->_modelPath . $this->_url[0] .  $this->_subPath );
             $this->_controller->index();
             return FALSE;            
         }

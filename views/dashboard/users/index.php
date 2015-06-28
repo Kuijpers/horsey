@@ -3,7 +3,7 @@
 use DKW\Tracking\Session as Session;
 
 
- //echo "<pre>"; print_r($_SESSION); echo "</pre>";
+//echo "<pre>"; print_r($_SESSION); echo "</pre>";
 
     $userdata = $this->show_usersdata;
     $pagepath = $this->pagepath;
@@ -21,10 +21,10 @@ use DKW\Tracking\Session as Session;
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h4> Users </h4>
+    <h4> <?php echo $lang['USERS_DEFAULT'];?> </h4>
   </div>
   <div class="panel-body">
-    <p>All current users</p>
+    <p><?php echo $lang['USERS_INDEX_ALL_CURRENT'];?></p>
     <?php
     if(Session::exsist('danger')){
         echo "<div class='alert alert-danger' role='alert'><p><center><b>";
@@ -62,12 +62,12 @@ use DKW\Tracking\Session as Session;
     <table class="table table-striped">
         <thead>
             <th><label><input type="checkbox"></label></th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Telephone</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Usertype</th>
+            <th><?php echo $lang['USERS_INDEX_FIRSTNAME'];?></th>
+            <th><?php echo $lang['USERS_INDEX_LASTNAME'];?></th>
+            <th><?php echo $lang['USERS_INDEX_TELEPHONE'];?></th>
+            <th><?php echo $lang['USERS_INDEX_EMAIL'];?></th>
+            <th><?php echo $lang['USERS_INDEX_USERNAME'];?></th>
+            <th><?php echo $lang['USERS_INDEX_USERTYPE'];?></th>
             <th>&nbsp;</th>
         </thead>
         <tbody>
@@ -76,23 +76,23 @@ use DKW\Tracking\Session as Session;
                         switch ($value['login_status']) {
                                 case 'first':
                                     $button = "info";
-                                    $title = "First log required";
+                                    $title = $lang['USERS_INDEX_STATUS_TITLE_FIRSTLOG'];
                                 break;
                                 case 'active':
                                     $button = "success";
-                                    $title = "Active";
+                                    $title = $lang['USERS_INDEX_STATUS_TITLE_ACTIVE'];
                                 break;
                                 case 'blocked':
                                     $button = "danger";
-                                    $title = "Blocked";
+                                    $title = $lang['USERS_INDEX_STATUS_TITLE_BLOCKED'];
                                 break;
                                 case 'inactive':
                                     $button = "warning";
-                                    $title = "Inactive";
+                                    $title = $lang['USERS_INDEX_STATUS_TITLE_INACTIVE'];
                                 break;
                                 default:
                                     $button = "info";
-                                    $title = "First log required";
+                                    $title = $lang['USERS_INDEX_STATUS_TITLE_FIRSTLOG'];
                                 break;
                                 }
                         echo "<tr>\n";
@@ -102,21 +102,21 @@ use DKW\Tracking\Session as Session;
                         echo "      <td>". $value['user_telephone']  ."</td>\n";
                         echo "      <td>". $value['user_email']  ."</td>\n";
                         echo "      <td>". $value['login_name']  ."</td>\n";
-                        echo "      <td>". ucfirst($value['login_usertype'])  ."</td>\n";
+                        echo "      <td>". $lang['USERS_DEFAULT_USERTYPE_'.strtoupper ($value['login_usertype'] )]  ."</td>\n";
                         echo "      <td> <div class='btn-group'><button type='button' class='btn btn-$button btn-xs dropdown-toggle glyphicon glyphicon-flag' data-toggle='dropdown' aria-expanded='false' title='$title' alt='$title'></button> \n";
                         if($_SESSION['login_usertype'] == 'owner' || $_SESSION['login_usertype'] == 'admin'){
                             if($_SESSION['login_usertype'] == 'owner'||($_SESSION['login_usertype'] == 'admin' && $value['login_status'] != "blocked")){
                         echo "      <ul class='dropdown-menu' role='menu'>\n";
                                 if($value['login_status']!="active"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='&nbsp; Please give a reason for changing the status of: ". $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='active'>Active Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='active'>Active Status</a></li>\n";
                                }
                                if($value['login_status']!="inactive"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='&nbsp; Please give a reason for changing the status of: ". $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."'data-status='inactive'>Inactive Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."'data-status='inactive'>Inactive Status</a></li>\n";
                                }
                             }
                             if($_SESSION['login_usertype'] == 'owner'){
                                 if($value['login_status']!="blocked"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='&nbsp; Please give a reason for changing the status of: ". $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='blocked'>Blocked Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='blocked'>Blocked Status</a></li>\n";
                                 }
                             }
                         echo "     </ul></div>";

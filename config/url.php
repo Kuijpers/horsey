@@ -14,4 +14,5 @@
 
 define ('URL', $personal['URL']);
 define ('LIBS','libs/');
+define ('LANG','lang/');
 

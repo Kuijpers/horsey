@@ -49,8 +49,8 @@ class Controller{
             
             $modelName = ucfirst($name). '_Model';
             //die($modelName);
-            $this->model = new $modelName();        
+            $this->model = new $modelName();  
         }
-    
+        
     }
 }

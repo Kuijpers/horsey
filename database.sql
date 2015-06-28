@@ -11,13 +11,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Databasestructuur van horsey wordt geschreven
-DROP DATABASE IF EXISTS `horsey`;
 CREATE DATABASE IF NOT EXISTS `horsey` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 USE `horsey`;
 
 
 -- Structuur van  tabel horsey.Error wordt geschreven
-DROP TABLE IF EXISTS `Error`;
 CREATE TABLE IF NOT EXISTS `Error` (
   `error_id` int(11) NOT NULL AUTO_INCREMENT,
   `error_call` varchar(45) COLLATE utf8_bin DEFAULT NULL,
@@ -37,8 +35,24 @@ INSERT INTO `Error` (`error_id`, `error_call`, `error_description`, `error_link`
 /*!40000 ALTER TABLE `Error` ENABLE KEYS */;
 
 
+-- Structuur van  tabel horsey.General_settings wordt geschreven
+CREATE TABLE IF NOT EXISTS `General_settings` (
+  `general_settings_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `remarks` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`general_settings_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Dumpen data van tabel horsey.General_settings: 2 rows
+/*!40000 ALTER TABLE `General_settings` DISABLE KEYS */;
+INSERT INTO `General_settings` (`general_settings_id`, `description`, `value`, `remarks`) VALUES
+	(1, 'default_language', 'gb', NULL),
+	(2, 'websitecontact', '1', NULL);
+/*!40000 ALTER TABLE `General_settings` ENABLE KEYS */;
+
+
 -- Structuur van  tabel horsey.Login wordt geschreven
-DROP TABLE IF EXISTS `Login`;
 CREATE TABLE IF NOT EXISTS `Login` (
   `login_id` int(11) NOT NULL AUTO_INCREMENT,
   `login_name` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '0',
@@ -62,7 +76,6 @@ INSERT INTO `Login` (`login_id`, `login_name`, `login_password`, `login_usertype
 
 
 -- Structuur van  tabel horsey.Login_renew wordt geschreven
-DROP TABLE IF EXISTS `Login_renew`;
 CREATE TABLE IF NOT EXISTS `Login_renew` (
   `login_renew_id` int(11) NOT NULL AUTO_INCREMENT,
   `login_renew_date` date NOT NULL,
@@ -78,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `Login_renew` (
 
 
 -- Structuur van  tabel horsey.User wordt geschreven
-DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
@@ -90,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `user_country` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `user_telephone` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `user_email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_language` varchar(10) COLLATE utf8_bin DEFAULT 'gb',
   `user_creation_date` date DEFAULT NULL,
   `user_creation_time` time DEFAULT NULL,
   `Login_login_id` int(11) NOT NULL,
@@ -100,16 +113,15 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 -- Dumpen data van tabel horsey.User: 4 rows
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` (`user_id`, `user_firstname`, `user_lastname`, `user_adress`, `user_postcode`, `user_city`, `user_state`, `user_country`, `user_telephone`, `user_email`, `user_creation_date`, `user_creation_time`, `Login_login_id`) VALUES
-	(1, 'Dennis', 'Kuijpers', 'Zomaar', 'Zomaar24', 'Neverland', NULL, 'Netherlands', '06-98765432', 'zomaar@gmail.com', '2015-05-28', '16:58:21', 1),
-	(2, 'Fakefirst 2', 'Fakelast 2', 'Fakeadres 2', 'post 2', 'Fakecity 2', '', 'Netherlands', '06-87654321', 'fake2@hotmail.com', '2015-05-28', '16:58:23', 2),
-	(7, 'Fakefirst 1', 'Fakelast 1', 'Fake 1', 'post 1', 'Fakecity 1', '', 'Nederland', '06-12345678', 'Fake1@gmail.com', '2015-05-28', '16:58:26', 9),
-	(6, 'Fake 3', 'Fakelast 3', 'Fakeadres 3', 'post 3', 'Fakecity 3', '', 'Netherlands', '06-23456789', 'fake3@gmail.com', '2015-05-28', '16:58:27', 8);
+INSERT INTO `User` (`user_id`, `user_firstname`, `user_lastname`, `user_adress`, `user_postcode`, `user_city`, `user_state`, `user_country`, `user_telephone`, `user_email`, `user_language`, `user_creation_date`, `user_creation_time`, `Login_login_id`) VALUES
+	(1, 'Dennis', 'Kuijpers', 'Zomaar', 'Zomaar24', 'Neverland', NULL, 'Netherlands', '06-98765432', 'zomaar@gmail.com', 'nl', '2015-05-28', '16:58:21', 1),
+	(2, 'Fakefirst 2', 'Fakelast 2', 'Fakeadres 2', 'post 2', 'Fakecity 2', '', 'Netherlands', '06-87654321', 'fake2@hotmail.com', 'gb', '2015-05-28', '16:58:23', 2),
+	(7, 'Fakefirst 1', 'Fakelast 1', 'Fake 1', 'post 1', 'Fakecity 1', '', 'Nederland', '06-12345678', 'Fake1@gmail.com', 'gb', '2015-05-28', '16:58:26', 9),
+	(6, 'Fake 3', 'Fakelast 3', 'Fakeadres 3', 'post 3', 'Fakecity 3', '', 'Netherlands', '06-23456789', 'fake3@gmail.com', 'gb', '2015-05-28', '16:58:27', 8);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 
 
 -- Structuur van  tabel horsey.User_status wordt geschreven
-DROP TABLE IF EXISTS `User_status`;
 CREATE TABLE IF NOT EXISTS `User_status` (
   `user_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_status_previous` enum('first','active','blocked','inactive') COLLATE utf8_bin NOT NULL,

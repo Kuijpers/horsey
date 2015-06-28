@@ -30,7 +30,19 @@ class Delete extends Controller{
 //        // Custom CSS files
 //        $this->view->css = ['toggle.css'
 //                            //, 'pietje.css'
-//                           ];  
+//                           ];   
+        
+        // Require language files
+        $this->view->language = ['language' => $_SESSION['user_language']
+                                 ,'path'=> 'dashboard'
+                                 ,'required_files'=>['default'
+                                                     ,'cookie'
+                                                     ,'session'
+                                                     ,'error'
+                                                     ,'navigation'
+                                                     ,'users']
+            
+        ];
     }
     
     public function user($user_id) {

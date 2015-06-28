@@ -1,1 +1,1 @@
-Startpaging dashboard
+Startpage dashboard

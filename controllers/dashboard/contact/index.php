@@ -47,6 +47,18 @@ class Index extends Controller{
 //                            //, 'pietje.css'
 //                           ];
         
+        // Require language files
+        $this->view->language = ['language' => $_SESSION['user_language']
+                                 ,'path'=> 'dashboard'
+                                 ,'required_files'=>['default'
+                                                     ,'cookie'
+                                                     ,'session'
+                                                     ,'error'
+                                                     ,'navigation'
+                                                        ]
+            
+        ];
+        
             
         
     }
@@ -67,6 +79,7 @@ class Index extends Controller{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->general_settings = $this->model->get_general_settings();
           $this->view->render($this->viewpath.'index', $this->setup); 
     }
     

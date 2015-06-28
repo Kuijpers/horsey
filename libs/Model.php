@@ -21,4 +21,12 @@ class Model{
         
             //Debug::sentence("model");
     }
+    
+    public function get_general_settings(){
+        //echo '<pre>';print_r($this->db->read('SELECT * FROM General_settings'));echo '</pre>';die();
+        return $this->db->read('SELECT * FROM General_settings');        
+    }
+    
+    
+    
 } // End of class

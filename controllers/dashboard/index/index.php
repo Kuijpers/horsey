@@ -4,6 +4,8 @@
  * 
  * This class is an extension of the controller class
  * Within this class we handle everything needed for the Index page
+ * 
+ * This is a private page. Login is required.
  *
  * @author Dennis Kuijpers
  * @copyright (c) 2014, Dennis Kuijpers
@@ -46,6 +48,18 @@ class Index extends Controller{
 //                            //, 'pietje.css'
 //                           ];   
         
+        // Require language files
+        $this->view->language = ['language' => $_SESSION['user_language']
+                                 ,'path'=> 'dashboard'
+                                 ,'required_files'=>['default'
+                                                     ,'cookie'
+                                                     ,'session'
+                                                     ,'error'
+                                                     ,'navigation'
+                                                    
+                                                    ]
+            
+        ]; 
     }
     
     /**
@@ -64,6 +78,7 @@ class Index extends Controller{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->general_settings = $this->model->get_general_settings();
           $this->view->render($this->viewpath.'index', $this->setup); 
     }
     
