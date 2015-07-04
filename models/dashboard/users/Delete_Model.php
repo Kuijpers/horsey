@@ -33,14 +33,14 @@ class Delete_Model extends Model{
             // Check if $user_id is set
             $this->_empty_id($user_id);
             // Check if $user_id is numeric
-            $this->_check_int($user_id, 'Something went wrong. Please try again');
+            $this->_check_int($user_id, 'GLOBAL');
             // Check if $user_id exists
-            $this->_check_id($user_id, 'Something went wrong. Please try again');
+            $this->_check_id($user_id, 'GLOBAL');
             // Check if $user_id has usertype owner
-            $this->_check_usertype($user_id, "owner", 'The OWNER can\'t be deleted');
+            $this->_check_usertype($user_id, "owner", 'OWNER_DELETE');
             // Delete user with $user_id
             if($this->_delete_user($user_id)){
-                $this->_session->set('succes', 'User is removed');
+                $this->_session->set('succes', 'REMOVED');
                 header('location:' . URL . 'dashboard/users');
                 exit;
             }

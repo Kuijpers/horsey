@@ -237,7 +237,7 @@ use DKW\Tracking\Session as Session;
                 <li class="dropdown <?php if($this->firstactive == 'userarea'){echo 'active';}  ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span>
-                            <?php echo Session::get('user_firstname')." ".Session::get('user_lastname'). " <b>[</b> " . $lang['USERS_DEFAULT_USERTYPE_'.strtoupper (Session::get('login_usertype'))] . " <b>]</b> " ; ?> 
+                            <?php echo Session::get('user_firstname')." ".Session::get('user_lastname'). " <b>[</b> " . $lang['NAV_USERTYPE_'.strtoupper (Session::get('login_usertype'))] . " <b>]</b> " ; ?> 
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">

@@ -70,6 +70,7 @@ class Add extends Controller{
                                                      ,'session'
                                                      ,'error'
                                                      ,'navigation'
+                                                     ,'mail'
                                                      ,'users']
             
         ];
@@ -101,7 +102,7 @@ class Add extends Controller{
           $this->view->render($this->viewpath.'add', $this->setup);
     }
     
-    private function enum($table, $column){
+    private function _enum($table, $column){
         return $this->model->show_enum($table, $column);
     }    
 
@@ -110,7 +111,7 @@ class Add extends Controller{
         $this->_token -> check();
             // For debug remove slashes
                 //Debug::array_list($_POST, "This is the \$_POST list");
-        $enum = $this->enum('Login', 'login_usertype');
+        $enum = $this->_enum('Login', 'login_usertype');
         try{
                 // Validate the POST variables
              $this->_form   -> post('user_firstname')
@@ -163,7 +164,7 @@ class Add extends Controller{
             // Remove slashes for debug
                 //Debug::array_list($data, "The form has passed for further processing aka entering DB");
                 if($this->model->user_create($data)){
-                    $this->_session->set('succes', 'User is added succesfully !!');
+                    $this->_session->set('succes', 'ADDED');
                     header('location:' . URL . $this->pagepath);
                     die();
                 }           

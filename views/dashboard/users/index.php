@@ -29,21 +29,21 @@ use DKW\Tracking\Session as Session;
     if(Session::exsist('danger')){
         echo "<div class='alert alert-danger' role='alert'><p><center><b>";
         echo "<span class='glyphicon glyphicon-exclamation-sign'></span>";
-        echo Session::get('danger');
+        echo $lang['USERS_INDEX_COOKIES_DANGER_'.Session::get('danger')];
         echo "</b></center></p></div>";
         Session::delete('danger');
     }
     if(Session::exsist('succes')){
         echo "<div class='alert alert-success' role='alert'><p><center>";
         echo "<span class='glyphicon glyphicon-ok'></span>";
-        echo Session::get('succes');
+        echo $lang['USERS_INDEX_COOKIES_SUCCES_'.Session::get('succes')];
         echo "</center></p></div>";
         Session::delete('succes');
     }
     if(Session::exsist('warning')){
         echo "<div class='alert alert-warning' role='alert'><p><center>";
         echo "<span class='glyphicon glyphicon-warning-sign'></span>";
-        echo Session::get('warning');
+        echo $lang['USERS_INDEX_COOKIES_WARNING_'.Session::get('warning')];
         echo "</center></p></div>";
         Session::delete('warning');
     }
@@ -62,12 +62,12 @@ use DKW\Tracking\Session as Session;
     <table class="table table-striped">
         <thead>
             <th><label><input type="checkbox"></label></th>
-            <th><?php echo $lang['USERS_INDEX_FIRSTNAME'];?></th>
-            <th><?php echo $lang['USERS_INDEX_LASTNAME'];?></th>
-            <th><?php echo $lang['USERS_INDEX_TELEPHONE'];?></th>
-            <th><?php echo $lang['USERS_INDEX_EMAIL'];?></th>
-            <th><?php echo $lang['USERS_INDEX_USERNAME'];?></th>
-            <th><?php echo $lang['USERS_INDEX_USERTYPE'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_FIRSTNAME'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_LASTNAME'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_TELEPHONE'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_EMAIL'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_USERNAME'];?></th>
+            <th><?php echo $lang['USERS_DEFAULT_USER_TYPE'];?></th>
             <th>&nbsp;</th>
         </thead>
         <tbody>
@@ -76,23 +76,23 @@ use DKW\Tracking\Session as Session;
                         switch ($value['login_status']) {
                                 case 'first':
                                     $button = "info";
-                                    $title = $lang['USERS_INDEX_STATUS_TITLE_FIRSTLOG'];
+                                    $title = $lang['USERS_DEFAULT_STATUS_TITLE_FIRSTLOG'];
                                 break;
                                 case 'active':
                                     $button = "success";
-                                    $title = $lang['USERS_INDEX_STATUS_TITLE_ACTIVE'];
+                                    $title = $lang['USERS_DEFAULT_STATUS_TITLE_ACTIVE'];
                                 break;
                                 case 'blocked':
                                     $button = "danger";
-                                    $title = $lang['USERS_INDEX_STATUS_TITLE_BLOCKED'];
+                                    $title = $lang['USERS_DEFAULT_STATUS_TITLE_BLOCKED'];
                                 break;
                                 case 'inactive':
                                     $button = "warning";
-                                    $title = $lang['USERS_INDEX_STATUS_TITLE_INACTIVE'];
+                                    $title = $lang['USERS_DEFAULT_STATUS_TITLE_INACTIVE'];
                                 break;
                                 default:
                                     $button = "info";
-                                    $title = $lang['USERS_INDEX_STATUS_TITLE_FIRSTLOG'];
+                                    $title = $lang['USERS_DEFAULT_STATUS_TITLE_FIRSTLOG'];
                                 break;
                                 }
                         echo "<tr>\n";
@@ -108,24 +108,24 @@ use DKW\Tracking\Session as Session;
                             if($_SESSION['login_usertype'] == 'owner'||($_SESSION['login_usertype'] == 'admin' && $value['login_status'] != "blocked")){
                         echo "      <ul class='dropdown-menu' role='menu'>\n";
                                 if($value['login_status']!="active"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='active'>Active Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='active'>". $lang['USERS_DEFAULT_STATUS_TITLE_ACTIVE']  ."</a></li>\n";
                                }
                                if($value['login_status']!="inactive"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."'data-status='inactive'>Inactive Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."'data-status='inactive'>". $lang['USERS_DEFAULT_STATUS_TITLE_INACTIVE']  ."</a></li>\n";
                                }
                             }
                             if($_SESSION['login_usertype'] == 'owner'){
                                 if($value['login_status']!="blocked"){
-                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='blocked'>Blocked Status</a></li>\n";
+                        echo "        <li><a href='#' data-toggle='modal' data-target='#user_change_status' data-title-message='". $lang['USERS_INDEX_MODAL_STATUS_MESSAGE_REASON']. $value['user_firstname']  ." ". $value['user_lastname']  ." ' data-id='". $value['login_id']."' data-status='blocked'>". $lang['USERS_DEFAULT_STATUS_TITLE_BLOCKED']  ."</a></li>\n";
                                 }
                             }
                         echo "     </ul></div>";
                         }
-                        echo "      <a class='btn btn-default btn-xs glyphicon glyphicon-user' role='button' href='". URL .$pagepath."details/user/". $value['user_id']  ."'></a> \n";
+                        echo "      <a class='btn btn-default btn-xs glyphicon glyphicon-user' role='button' href='". URL .$pagepath."details/user/". $value['user_id']  ."' alt='". $lang['USERS_INDEX_USERPROFILE_ALT'] ."' title='". $lang['USERS_INDEX_USERPROFILE_TITLE'] ."'></a> \n";
                             if($_SESSION['login_usertype'] == 'owner' || $_SESSION['login_usertype'] == 'admin'){
-                        echo "      <a class='btn btn-primary btn-xs glyphicon glyphicon-edit' role='button' href='". URL .$pagepath."update/user/". $value['user_id']  ."'></a> \n";
+                        echo "      <a class='btn btn-primary btn-xs glyphicon glyphicon-edit' role='button' href='". URL .$pagepath."update/user/". $value['user_id']  ."' alt='". $lang['USERS_INDEX_USEREDIT_ALT'] ."' title='". $lang['USERS_INDEX_USEREDIT_TITLE'] ."'></a> \n";
                                 if($_SESSION['login_usertype'] == 'owner'){
-                        echo "      <a class='btn btn-danger btn-xs glyphicon glyphicon-trash' role='button' href='#' data-toggle='modal' data-target='#confirm-delete'  data-href='". URL .$pagepath."delete/user/". $value['user_id']  ."' data-title='Do you realy want to delete user:". $value['user_firstname']  ." ". $value['user_lastname']  ." '></a></td>\n";
+                        echo "      <a class='btn btn-danger btn-xs glyphicon glyphicon-trash' role='button' href='#' data-toggle='modal' data-target='#confirm-delete'  data-href='". URL .$pagepath."delete/user/". $value['user_id']  ."' data-title='". $lang['USERS_INDEX_MODAL_DELETE_CONFIRM_USER'] . $value['user_firstname']  ." ". $value['user_lastname']  ." 'alt='". $lang['USERS_INDEX_USERDELETE_ALT'] ."' title='". $lang['USERS_INDEX_USERDELETE_TITLE'] ."'></a></td>\n";
                                 }
                             }
                         echo "</tr>\n";

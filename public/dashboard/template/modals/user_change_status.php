@@ -3,18 +3,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Status change </h4>
+                    <h4 class="modal-title"><?php  echo $lang['USERS_INDEX_MODAL_STATUS_CHANGE']; ?></h4>
                 </div>
                 <div class="modal-title-message">
-                    <h5> zomaar tekst</h5>
+                    <h5>This line of text will be replaced on output</h5>
                 </div>
                 <div class="modal-body">
-                    <h4>Status change</h4>
                     
                         <table class="table table-hover table-condensed">
                             <tr>
                                 <td>
-                                    <label for="login_id">User ID</label>
+                                    <label for="login_id"><?php  echo $lang['USERS_INDEX_MODAL_STATUS_CHANGE_USERID']; ?></label>
                                 </td>
                                 <td>
                                     <input name="login_id" type="text" class="form-control span6" id="login_id" readonly="readonly">
@@ -22,7 +21,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="login_status">Change status to :</label>
+                                    <label for="login_status"><?php  echo $lang['USERS_INDEX_MODAL_STATUS_CHANGE_STATUS']; ?></label>
                                 </td>
                                 <td>
                                     <input name="login_status" type="text" class="form-control span6" id="login_status" readonly="readonly">
@@ -30,7 +29,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <label for="status_change">Reason:</label>
+                                    <label for="status_change"><?php  echo $lang['USERS_INDEX_MODAL_STATUS_CHANGE_REASON']; ?></label>
                                 </td>
                             </tr>
                             <tr>
@@ -43,8 +42,8 @@
                     <?php $token->input_form() ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php  echo $lang['DASH_CANCEL']; ?></button>
+                    <button type="submit" class="btn btn-primary"><?php  echo $lang['DASH_CONFIRM']; ?></button>
                 </div>
             </div>
         </div>

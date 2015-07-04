@@ -82,7 +82,7 @@ class Status extends Controller{
             // For debug remove slashes
                //Debug::array_list($_POST, "This is the \$_POST list");
         
-                $enum = $this->enum('Login', 'login_status');
+                $enum = $this->_enum('Login', 'login_status');
                 //print_r($enum); die();
                 
                 try{
@@ -107,7 +107,7 @@ class Status extends Controller{
                     // Remove slashes for debug
                         //Debug::array_list($data, "The form has passed for further processing aka entering DB");
                     if($this->model->user_update_status($data)){
-                        $this->_session->set('succes', 'Status is changed succesfully !!');
+                        $this->_session->set('succes', 'CHANGED');
                         header('location:' . URL . $this->mainpage);
                         die();
                     }
@@ -117,7 +117,7 @@ class Status extends Controller{
     }
     
     
-    private function enum($table, $column){
+    private function _enum($table, $column){
         return $this->model->show_enum($table, $column);
     }
  } //End of class

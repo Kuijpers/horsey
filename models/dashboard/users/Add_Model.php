@@ -85,7 +85,7 @@ class Add_Model extends Model{
             
             $this->_mail->send('private/mail/verificationmail.php', $mailinfo, function($m){
                         $m->to($this->_user_email);
-                        $m->subject('Please verify your subscription');
+                        $m->subject($lang['MAIL_SUBJECT_ADDUSER']);
                         });
             return TRUE;
     }

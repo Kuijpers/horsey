@@ -68,7 +68,7 @@ class Update_Model extends Model{
  */
     public function show_update_info($user_id){
         $this->_empty_id($user_id);
-        $this->_check_usertype($user_id, "owner", 'Owner information can\'t be changed');
+        $this->_check_usertype($user_id, "owner", 'OWNER_CHANGE');
         return $this->show_single_userdata($user_id);
     }
 /**

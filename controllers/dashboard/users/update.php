@@ -117,7 +117,7 @@ class Update extends Controller{
 /**
  * Get the enum options from database for comparing
  */ 
-        $enum = $this->enum('Login', 'login_usertype');
+        $enum = $this->_enum('Login', 'login_usertype');
         try{
                 // Validate the POST variables
              $this->_form   -> post('user_id')
@@ -177,7 +177,7 @@ class Update extends Controller{
             // Remove slashes for debug
                 //Debug::array_list($data, "The form has passed for further processing aka entering DB");
                 if($this->model->user_update($data)){
-                    $this->_session->set('succes', 'Update is executed succesfully !!');
+                    $this->_session->set('succes', 'UPDATED');
                     header('location:' . URL . $this->pagepath);
                     die();
                 }           
@@ -186,7 +186,7 @@ class Update extends Controller{
         }
     }
    
-    private function enum($table, $column){
+    private function _enum($table, $column){
         return $this->model->show_enum($table, $column);
     }  
 }

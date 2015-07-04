@@ -33,14 +33,20 @@ class Language {
 
         // Set the language to use
         $language_folder = self::_set_language($selected_language, $available_languages);
+        
+        $missing_file = 0;
 
         // Get the language files
           foreach ($files as $file) {
                 if(file_exists(''.LANG.$language_folder.'/'. $subfolder .'/'. $file .'.php')){
                     require_once ''.LANG.$language_folder.'/'. $subfolder .'/'. $file .'.php' ;
                 }else{
-                    echo ''.LANG.$language_folder.'/'. $subfolder .'/'. $file .'.php <b>does not exist!!</b>' ;echo "<br>";die();
+                    $missing_file = 1;
+                    echo ''.LANG.$language_folder.'/'. $subfolder .'/'. $file .'.php <b>does not exist!!</b>' ;echo "<br>";
                 }
+            }
+            if($missing_file != 0 ){
+                die('Missing files!!!!');
             }
         return $lang;
     }

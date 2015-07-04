@@ -52,13 +52,13 @@ class Status_Model extends Model{
             
         // When the change has to be made for owner redirect to admin page without changing status
             if($login_status_previous[0]['login_usertype'] == "owner"){
-                $this->_session->set('danger', 'Owner status can\'t be changed !!');
+                $this->_session->set('danger', 'OWNER_DELETE');
                         header('location:' . URL . 'users');
                         die();
             }
         // When trying to change own status redirect to admin page without changing status
             if($data['user'] == $data['login_id']){
-               $this->_session->set('danger', 'You can\'t change your own status !!');
+               $this->_session->set('danger', 'OWN_STATUS');
                         header('location:' . URL . 'users');
                         die();
             }

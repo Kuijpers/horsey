@@ -2,14 +2,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Confirm deleting user </h4>
+                <h4 class="modal-title"><?php echo $lang['USERS_INDEX_MODAL_TITLE']; ?></h4>
             </div>
             <div class="modal-body">
-                You really want to delete this user?
+                <?php echo $lang['USERS_INDEX_MODAL_DELETE_CONFIRM']; ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang['DASH_CANCEL']; ?></button>
+                <a class="btn btn-danger btn-ok"><?php echo $lang['DASH_DELETE']; ?></a>
             </div>
         </div>
     </div>

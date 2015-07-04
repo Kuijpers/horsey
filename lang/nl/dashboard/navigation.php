@@ -58,7 +58,12 @@
          ,'NAV_PERSONAL_SETTINGS'       => 'Instellingen'
          ,'NAV_PERSONAL_HELP'       => 'Hulp'
          ,'NAV_PERSONAL_USERGUIDE'  => 'Handleiding'
-         ,'NAV_PERSONAL_LOGOUT'     => 'Uitloggen'
+         ,'NAV_PERSONAL_LOGOUT'     => 'Uitloggen',
+     
+     'NAV_USERTYPE'       => '',
+            'NAV_USERTYPE_OWNER'              => 'Eigenaar',     
+            'NAV_USERTYPE_ADMIN'              => 'Administratie',     
+            'NAV_USERTYPE_USER'               => 'Gebruiker'
      
      
      
