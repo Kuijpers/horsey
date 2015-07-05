@@ -48,10 +48,6 @@ class Index extends Controller{
 //                            //, 'pietje.css'
 //                           ];   
         
-        if(!DKW\Tracking\Session::exsist('user_language')){
-            $page = DKW\Tracking\Url::curPageURL();
-            header('Location: '.$page);
-        }
         // Require language files
         $this->view->language = ['language' => $_SESSION['user_language']
                                  ,'path'=> 'dashboard'
