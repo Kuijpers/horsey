@@ -1,6 +1,5 @@
 <?php
 use DKW\Tracking\Logged as Logged;
-use DKW\Tracking\Session as Session;
 use DKW\Language\Language as Language;
 
 $default_language = $this->general_settings[0]['value'];
@@ -9,31 +8,7 @@ $default_language = $this->general_settings[0]['value'];
          * Check if user is already logged in. If not redirect to loginpage.
          *
          */
-        if(Logged::check_logged()){ 
-            if(! Session::exsist('login_id')){
-                $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
-                $query ="SELECT User.*,  Login.*
-                                FROM Login
-                                JOIN User ON 
-                                Login.login_id = User.Login_login_id
-                                and 
-                                Login.login_id = :login_id "; 
-                $array = [ ':login_id' => $_COOKIE[COOKIE_LOG_NAME]];
-                // Get the information
-                $data = $this->db->read($query, $array);
-                
-                // Remove slashes for debug. After removal logout and login again
-                    //echo "<pre>";print_r($data);echo "</pre>"; die();
-                
-                Session::set('login_id', $data[0]['login_id']);
-                Session::set('login_usertype', $data[0]['login_usertype']);
-                Session::set('login_status', $data[0]['login_status']);
-                Session::set('user_firstname', $data[0]['user_firstname']);
-                Session::set('user_lastname', $data[0]['user_lastname']);
-                Session::set('user_email', $data[0]['user_email']);
-                Session::set('user_language', $data[0]['user_language']);
-            }
-        }
+        Logged::check_logged();
 ?>
 
 <!DOCTYPE html>

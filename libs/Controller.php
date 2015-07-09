@@ -20,10 +20,8 @@ class Controller{
         
         $this->view = new View();
         // Check if language session exists. If not restart the page so it can be set.
-        if(!DKW\Tracking\Session::exsist('user_language')){
-            $page = DKW\Tracking\Url::curPageURL();
-            header('Location: '.$page);
-        }
+        
+        
         
         
     }

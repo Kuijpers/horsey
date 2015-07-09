@@ -33,11 +33,11 @@ class Index_Model extends Model{
         
                 
 // Class settings
-        $this->_error = new Error();
-        $this->_token = new DKW\Security\Token();
-        $this->_hash = new DKW\Security\Hash();
+        $this->_error   = new Error();
+        $this->_token   = new DKW\Security\Token();
+        $this->_hash    = new DKW\Security\Hash();
         $this->_session = new DKW\Tracking\Session();
-        $this->_cookie = new DKW\Tracking\Cookie();
+        $this->_cookie  = new DKW\Tracking\Cookie();
         
         // Generate hashkeys to use
             //echo Hash::create('SHA256', 'welkom', HASH_PW_KEY);die();
@@ -97,6 +97,26 @@ class Index_Model extends Model{
                     //echo "Set shorttime"; die();
                     $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],$this->_cookie->Session);
                 }
+                $query ="SELECT User.*,  Login.*
+                                FROM Login
+                                JOIN User ON 
+                                Login.login_id = User.Login_login_id
+                                and 
+                                Login.login_id = :login_id "; 
+                $array = [ ':login_id' => $data[0]['login_id']];
+                // Get the information
+                $data = $this->db->read($query, $array);
+                
+                // Remove slashes for debug. After removal logout and login again
+                    //echo "<pre>";print_r($data);echo "</pre>"; die();
+                
+                $this->_session->set('login_id', $data[0]['login_id']);
+                $this->_session->set('login_usertype', $data[0]['login_usertype']);
+                $this->_session->set('login_status', $data[0]['login_status']);
+                $this->_session->set('user_firstname', $data[0]['user_firstname']);
+                $this->_session->set('user_lastname', $data[0]['user_lastname']);
+                $this->_session->set('user_email', $data[0]['user_email']);
+                $this->_session->set('user_language', $data[0]['user_language']);
             
             
             
