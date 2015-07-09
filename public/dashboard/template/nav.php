@@ -241,14 +241,14 @@ use DKW\Tracking\Session as Session;
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
+                        <li <?php if($this->secondactive == 'personalprofile'){echo 'class="active"';}  ?>>
+                            <a href="<?php echo URL  ?>dashboard/personal/profile/">
                                 <span class="glyphicon glyphicon-user"></span>
                                 <?php  echo $lang['NAV_PERSONAL_PROFILE']; ?> 
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li <?php if($this->secondactive == 'personalsettings'){echo 'class="active"';}  ?>>
+                            <a href="<?php echo URL  ?>dashboard/personal/settings/">
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <?php  echo $lang['NAV_PERSONAL_SETTINGS']; ?> 
                             </a>

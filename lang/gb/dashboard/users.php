@@ -26,7 +26,7 @@
          'USERS_DEFAULT_CITY'                 =>  'City',
          'USERS_DEFAULT_POSTCITY'             =>  'Postcode and City',
          'USERS_DEFAULT_STATE'                =>  'State / Province',
-         'USERS_DEFAULT_COUNTRY'              =>  'LCountry',
+         'USERS_DEFAULT_COUNTRY'              =>  'Country',
          'USERS_DEFAULT_TELEPHONE'            =>  'Phone number',
          'USERS_DEFAULT_EMAIL'                =>  'Emailaddress',
          'USERS_DEFAULT_USER'                 =>  'User',
