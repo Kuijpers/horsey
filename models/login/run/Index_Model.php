@@ -111,6 +111,7 @@ class Index_Model extends Model{
                     //echo "<pre>";print_r($data);echo "</pre>"; die();
                 
                 $this->_session->set('login_id', $data[0]['login_id']);
+                $this->_session->set('user_id', $data[0]['user_id']);
                 $this->_session->set('login_usertype', $data[0]['login_usertype']);
                 $this->_session->set('login_status', $data[0]['login_status']);
                 $this->_session->set('user_firstname', $data[0]['user_firstname']);

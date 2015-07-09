@@ -80,7 +80,7 @@ class Profile extends Controller{
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
           $this->view->general_settings = $this->model->get_general_settings();
-          $this->view->user_details = $this->model->get_user_details($_SESSION['login_id']);
+          $this->view->user_details = $this->model->get_user_details($_SESSION['user_id']);
           $this->view->render($this->viewpath.'profile', $this->setup); 
     }
     

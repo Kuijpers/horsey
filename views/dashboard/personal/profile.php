@@ -1,6 +1,6 @@
 <?php
 //echo "<pre>"; print_r($lang); echo "</pre>";
-echo "<pre>"; print_r($_SESSION); echo "</pre>";
+//echo "<pre>"; print_r($_SESSION); echo "</pre>";
 
     $user_details   = $this->user_details['user_details'];
     $login_info     = $this->user_details['login_info'];
@@ -67,14 +67,14 @@ foreach ($user_details[0] as $key => $value) {
                         </tr>
                         <tr>
                             <td>
-                                <button type="button" class="btn btn-primary">
+                                <a class="btn btn-primary" href="#">
                                     Update personal information
-                                </button>
+                                </a>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary">
+                                <a class="btn btn-primary" href="#">
                                     Update picture
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -130,9 +130,9 @@ foreach ($login_info[0] as $key => $value) {
 ?>
                         <tr>
                             <td colspan="2">
-                                <button type="button" class="btn btn-primary">
+                                <a class="btn btn-primary" href="#">
                                     Change username
-                                </button>
+                                </a>
                             </td>
                         </tr>    
                     </tbody>
