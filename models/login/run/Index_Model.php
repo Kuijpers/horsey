@@ -92,10 +92,10 @@ class Index_Model extends Model{
             
                 if(isset($_POST['remember']) && $_POST['remember']=='TRUE'){
                     //echo "Set long time"; die();
-                    $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],$this->_cookie->Lifetime);
+                    $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],'Lifetime');
                 }else{
                     //echo "Set shorttime"; die();
-                    $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],$this->_cookie->Session);
+                    $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],'Session');
                 }
                 $query ="SELECT User.*,  Login.*
                                 FROM Login
