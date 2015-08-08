@@ -38,7 +38,7 @@ class Index_Model extends Model{
         $this->_hash    = new DKW\Security\Hash();
         $this->_session = new DKW\Tracking\Session();
         $this->_cookie  = new DKW\Tracking\Cookie();
-        
+                
         // Generate hashkeys to use
             //echo Hash::create('SHA256', 'welkom', HASH_PW_KEY);die();
     }
