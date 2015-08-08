@@ -1,6 +1,18 @@
 <?php
 namespace DKW\Tracking;
 
+    // Define constants
+        
+   define('Session', null);
+   define('Onehour', 3600);
+   define('Workday', 30600);
+   define('OneDay', 86400);
+   define('SevenDays', 604800);
+   define('ThirtyDays', 2592000);
+   define('SixMonths', 15811200);
+   define('Lifetime', -1);
+
+
 /**
  * Description of Cookie
  * 
@@ -11,19 +23,7 @@ namespace DKW\Tracking;
  * 
  */
 class Cookie {
-    /**
-     * List of constants
-     */
-    const Session = null;
-    const Onehour = 3600;
-    const Workday = 30600;
-    const OneDay = 86400;
-    const SevenDays = 604800;
-    const ThirtyDays = 2592000;
-    const SixMonths = 15811200;
-    const OneYear = 31536000;
-    const Lifetime = -1; // 2030-01-01 00:00:00
-
+    
   /**
    * cookie_exists($name)
    * Returns true if there is a COOKIE with this name.
@@ -86,19 +86,22 @@ class Cookie {
    */
   static public function cookie_set($name, $value, $expiry = self::OneYear, $path = '/', $domain = false)
       {
+//      echo $expiry; die();
         $retval = false;
         if (!headers_sent())
         {
           if ($domain === false)
             $domain = $_SERVER['HTTP_HOST'];
 
-          if ($expiry === -1)
+          if (constant($expiry) == -1){
             $expiry = 1893456000; // Lifetime = 2030-01-01 00:00:00
-          elseif (is_numeric($expiry))
+          }
+          elseif (is_numeric($expiry)){
             $expiry += time();
-          else
+          }
+          else{
             $expiry = strtotime($expiry);
-
+          }
           $retval = @setcookie($name, $value, $expiry, $path, $domain);
           if ($retval)
             $_COOKIE[$name] = $value;
