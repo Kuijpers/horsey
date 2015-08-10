@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Index extends Controller{
+class Index extends DashboardController{
     
 // Setting the variables    
     

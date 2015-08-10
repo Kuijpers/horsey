@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Add_Model extends Model{
+class Add_Model extends DashboardModel{
 
 // Set last ID
     private $_last_id = '';

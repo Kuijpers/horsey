@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Newuser extends Controller{
+class Newuser extends DashboardController{
     
 // Setting the variables    
     

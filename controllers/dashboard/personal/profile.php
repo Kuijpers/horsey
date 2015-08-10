@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of links
  * 
@@ -11,11 +12,11 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Profile extends Controller{
+class Profile extends DashboardController{
     
 // Setting the variables    
     // The main page used for this controller
-    private $pagepath = 'dashboard/personal/'; // Always provide a trailing slash ( '/' ) at the end !!!
+    private $pagepath = 'dashboard/personal/profile/'; // Always provide a trailing slash ( '/' ) at the end !!!
     // The view used for this page
     private $viewpath = 'personal/'; // Always provide a trailing slash ( '/' ) at the end !!!
     // Setup needed for this page
@@ -60,7 +61,14 @@ class Profile extends Controller{
                                                      ,'personal'
                                                         ]
             
-        ];  
+        ]; 
+        
+               
+// Class settings
+        $this->_error = new Error();
+        $this->_token = new DKW\Security\Token();
+        $this->_form = new DKW\Form\Form();
+        $this->_session = new DKW\Tracking\Session();
     }
     
     /**
@@ -79,9 +87,107 @@ class Profile extends Controller{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->pagepath = $this->pagepath;
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->user_details = $this->model->get_user_details($_SESSION['user_id']);
           $this->view->render($this->viewpath.'profile', $this->setup); 
+    }
+    
+    
+    public function edit_registration(){
+          $this->view->title = $this->pagetitle;
+          $this->view->firstactive = $this->firstactive;
+          $this->view->secondactive = $this->secondactive;
+          $this->view->thirdactive = $this->thirdactive;
+          $this->view->fourthactive = $this->fourthactive;
+          $this->view->pagepath = $this->pagepath;
+          $this->view->general_settings = $this->model->get_general_settings();
+          $this->view->user_details = $this->model->get_user_details($_SESSION['user_id']);
+          $this->view->render($this->viewpath.'profile_edit_registration', $this->setup); 
+    }
+    
+    public function edit_username(){
+          $this->view->title = $this->pagetitle;
+          $this->view->firstactive = $this->firstactive;
+          $this->view->secondactive = $this->secondactive;
+          $this->view->thirdactive = $this->thirdactive;
+          $this->view->fourthactive = $this->fourthactive;
+          $this->view->pagepath = $this->pagepath;
+          $this->view->general_settings = $this->model->get_general_settings();
+          $this->view->user_details = $this->model->get_user_details($_SESSION['user_id']);
+          $this->view->render($this->viewpath.'profile_edit_username', $this->setup); 
+    }
+    
+    public function update_registration(){
+        //echo "<pre>";print_r($_POST);echo "</pre>";
+        
+        $this->_error -> Request_Method('POST');
+        $this->_token -> check();
+        
+         try{
+                // Validate the POST variables
+             $this->_form   -> post('user_firstname')
+                                -> val('required')
+                                -> val('minlength', '3')
+                                -> val('maxlength', '45')
+                            -> post('user_lastname')
+                                -> val('required')
+                                -> val('minlength', '3')
+                                -> val('maxlength', '45')
+                            -> post('user_adress')
+                                -> val('required')
+                                -> val('minlength', '6')
+                                -> val('maxlength', '45')
+                            -> post('user_postcode')
+                                -> val('required')
+                                -> val('minlength', '3')
+                                -> val('maxlength', '45')
+                            -> post('user_city')
+                                -> val('required')
+                                -> val('minlength', '3')
+                                -> val('maxlength', '45')
+                            -> post('user_state')
+                            -> post('user_country')
+                                -> val('required')
+                                -> val('minlength', '3')
+                                -> val('maxlength', '45')
+                            -> post('user_telephone')
+                                -> val('required')
+                                -> val('minlength', '6')
+                                -> val('maxlength', '45')
+                            -> post('user_email')
+                                -> val('required')
+                                -> val('minlength', '6')
+                                -> val('maxlength', '100')
+                                -> val('emailcheck')
+                            -> post('csrf')
+                                -> val('required');
+                // Remove slashes for debug          
+                    //Debug::array_list($this->_form, "The form is validated");
+                $this->_form ->submit();
+                $data = $this->_form->fetch();
+            // Remove slashes for debug
+                //Debug::array_list($data, "The form has passed for further processing aka entering DB");
+                if($this->model->user_update($data)){
+                    $this->_session->set('succes', 'UPDATED_REGISTRATION');
+                    header('location:' . URL . $this->pagepath);
+                    die();
+                }           
+        } catch (Exception $error) {
+            echo $error->getMessage();
+        }
+        
+    }
+    
+    public function update_username(){
+        echo "<pre>";print_r($_POST);echo "</pre>";
+        
+        echo "<pre>";print_r($_SESSION);echo "</pre>";
+        
+        $this->_error -> Request_Method('POST');
+        $this->_token -> check();
+        
+        
     }
     
 }

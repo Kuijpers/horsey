@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Settings extends Controller{
+class Settings extends DashboardController{
     
 // Setting the variables    
     // The main page used for this controller

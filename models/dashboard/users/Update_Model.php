@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Update_Model extends Model{
+class Update_Model extends DashboardModel{
         
     
 // Class variables

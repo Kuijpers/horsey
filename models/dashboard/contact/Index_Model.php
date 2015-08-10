@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Index_Model extends Model{
+class Index_Model extends DashboardModel{
     
     /**
      *  function __construct will automatically generate when method is called

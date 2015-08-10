@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Delete_Model extends Model{
+class Delete_Model extends DashboardModel{
     
 // Class variables    
     protected $_session;

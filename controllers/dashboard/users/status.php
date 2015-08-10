@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Status extends Controller{
+class Status extends DashboardController{
     
 // Setting the variables    
     

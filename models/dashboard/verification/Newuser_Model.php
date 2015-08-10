@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Newuser_Model extends Model{
+class Newuser_Model extends DashboardModel{
         
     
 // Class variables

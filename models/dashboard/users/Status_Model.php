@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Status_Model extends Model{
+class Status_Model extends DashboardModel{
     
     
 // Class variables

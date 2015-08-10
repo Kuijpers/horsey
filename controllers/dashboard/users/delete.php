@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Delete extends Controller{    
+class Delete extends DashboardController{    
     
 /**
  *  function __construct will automatically generate when method is called

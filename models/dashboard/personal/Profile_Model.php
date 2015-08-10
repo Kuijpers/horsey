@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Profile_Model extends Model{
+class Profile_Model extends DashboardModel{
     
     /**
      *  function __construct will automatically generate when method is called
@@ -20,6 +20,12 @@ class Profile_Model extends Model{
         parent::__construct(); // Insert __construct method from Class controller
             
         //Debug::sentence("Links model");
+                
+               
+// Class settings
+        $this->_error = new Error();
+        $this->_token = new DKW\Security\Token();
+        $this->_sanit = new DKW\Security\Sanitize();
     }
     
     public function get_user_details($user_id){
@@ -32,6 +38,43 @@ class Profile_Model extends Model{
         $details = array_merge($details, $this->_get_status_details($details['user_details'][0]['Login_login_id']));
         
         return $details;
+    }
+    
+    /*
+     *  Update userprofile 
+     */
+    public function user_update($data){
+        $this->_error -> Request_Method('POST');
+        $this->_token -> check();
+        
+        // Remove slashes for debug
+            //Debug::array_list($data, "We can now enter the following data in DB :");
+            
+            
+            $this->db->update('User', [
+                                            'user_firstname' => $this->_sanit->escape($data['user_firstname']),
+                                            'user_lastname' => $this->_sanit->escape($data['user_lastname']),
+                                            'user_adress' => $this->_sanit->escape($data['user_adress']),
+                                            'user_postcode' => $this->_sanit->escape($data['user_postcode']),
+                                            'user_city' => $this->_sanit->escape($data['user_city']),
+                                            'user_state' => $this->_sanit->escape($data['user_state']),
+                                            'user_country' => $this->_sanit->escape($data['user_country']),
+                                            'user_telephone' => $this->_sanit->escape($data['user_telephone']),
+                                            'user_email' => $this->_sanit->escape($data['user_email'])],
+                                          'user_id ='. $_SESSION['user_id']
+                                        );
+            return TRUE;
+    }    
+    /*
+     * Update username
+     */
+    public function username_update($data){
+        $this->_error -> Request_Method('POST');
+        $this->_token -> check();
+        
+        // Remove slashes for debug
+            Debug::array_list($data, "We can now enter the following data in DB :");
+            
     }
     
     /*

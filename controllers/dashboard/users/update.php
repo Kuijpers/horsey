@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Update extends Controller{
+class Update extends DashboardController{
     
 // Setting the variables        
     

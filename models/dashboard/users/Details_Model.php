@@ -10,7 +10,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Details_Model extends Model{
+class Details_Model extends DashboardModel{
     
     /**
      *  function __construct will automatically generate when method is called

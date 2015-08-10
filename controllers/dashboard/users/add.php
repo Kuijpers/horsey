@@ -11,7 +11,7 @@
  * @copyright (c) 2014, Dennis Kuijpers
  * 
  */
-class Add extends Controller{
+class Add extends DashboardController{
     
 // Setting the variables    
     
