@@ -4,7 +4,7 @@
               This CMS is built by Darkknightworks.<br />Copyright &copy 2015
           </p>
       </div>
-    </footer>
+</footer>
 </div>
 <!-- /container -->
 

@@ -97,6 +97,6 @@ $default_language = $this->general_settings[0]['value'];
     </noscript>
     
 <body>
-    <div class="container">
+    <div class="container-fluid">
 
 
