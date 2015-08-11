@@ -13,7 +13,7 @@ class DashboardModel extends Model {
     public function __construct() {
         parent::__construct(); // Insert __construct method from Class controller
         
-        // empty for now
+        //Debug::sentence("Dashboard model");
     }
 
     //put your code here
