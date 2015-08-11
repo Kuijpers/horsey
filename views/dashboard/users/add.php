@@ -15,7 +15,7 @@
   <li><a href="<?php echo URL  ?>admin_settings/">Admin</a></li>
   <li class="active">Add user</li>
 </ol>
-
+<div class="col-md-9">
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -89,5 +89,6 @@
       </div>
     </div>
 </form>
+</div>
 </div>
 </div>

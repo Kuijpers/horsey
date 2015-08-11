@@ -17,7 +17,7 @@ use DKW\Tracking\Session as Session;
   <li class="active">Users</li>
 </ol>
 
-
+<div class="col-md-9">
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -161,4 +161,5 @@ use DKW\Tracking\Session as Session;
 
         </tbody> 
     </table>
+</div>
 </div>

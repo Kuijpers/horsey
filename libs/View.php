@@ -41,6 +41,7 @@ class View{
                 require 'public/dashboard/template/header.php';
                 require 'public/dashboard/template/nav.php';
                 require 'views/dashboard/' . $name . '.php';
+                require 'public/dashboard/template/notification.php';
                 require 'public/dashboard/template/footer.php';
             
             break;

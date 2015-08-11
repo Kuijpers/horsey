@@ -5,11 +5,36 @@
     $user_details   = $this->user_details['user_details'];
     $login_info     = $this->user_details['login_info'];
     $user_status    = $this->user_details['status_overview'];
+    $pagepath       = $this->pagepath;
     
     
-?>
+    use DKW\Tracking\Session as Session;
+    
+    
 
-
+if(Session::exsist('danger')){
+        echo "<div class='alert alert-danger' role='alert'><p><center><b>";
+        echo "<span class='glyphicon glyphicon-exclamation-sign'></span>";
+        echo $lang['PERSONAL_PROFILE_COOKIES_DANGER_'.Session::get('danger')];
+        echo "</b></center></p></div>";
+        Session::delete('danger');
+    }
+    if(Session::exsist('succes')){
+        echo "<div class='alert alert-success' role='alert'><p><center>";
+        echo "<span class='glyphicon glyphicon-ok'></span>";
+        echo $lang['PERSONAL_PROFILE_COOKIES_SUCCES_'.Session::get('succes')];
+        echo "</center></p></div>";
+        Session::delete('succes');
+    }
+    if(Session::exsist('warning')){
+        echo "<div class='alert alert-warning' role='alert'><p><center>";
+        echo "<span class='glyphicon glyphicon-warning-sign'></span>";
+        echo $lang['PERSONAL_PROFILE_COOKIES_WARNING_'.Session::get('warning')];
+        echo "</center></p></div>";
+        Session::delete('warning');
+    }
+    ?>
+<div class="col-md-9">
 <div class="panel panel-info">
     <div class="panel-heading">
       <h1 class="panel-title"><b><?php echo $lang['PERSONAL_TITLE'];?></b></h1>
@@ -67,13 +92,13 @@ foreach ($user_details[0] as $key => $value) {
                         </tr>
                         <tr>
                             <td>
-                                <a class="btn btn-primary" href="#">
-                                    Update personal information
+                                <a class="btn btn-primary" href="<?php echo URL . $pagepath ?>edit_registration/  ">
+                                    <?php echo $lang['PERSONAL_PROFILE_EDIT_REGISTRATION_BUTTON'];?>
                                 </a>
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="#">
-                                    Update picture
+                                    <?php echo $lang['PERSONAL_PROFILE_EDIT_PICTURE_BUTTON'];?>
                                 </a>
                             </td>
                         </tr>
@@ -130,8 +155,8 @@ foreach ($login_info[0] as $key => $value) {
 ?>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-primary" href="#">
-                                    Change username
+                                <a class="btn btn-primary" href="<?php echo URL . $pagepath ?>edit_username/">
+                                    <?php echo $lang['PERSONAL_PROFILE_EDIT_USERNAME_BUTTON'];?>
                                 </a>
                             </td>
                         </tr>    
@@ -209,6 +234,7 @@ if(empty($user_status)){
           </div>
         </div>
     </div>
+</div>
 </div>
 
 <!--<div class='btn-group'>-->

@@ -23,7 +23,7 @@
         require_once('public/dashboard/template/modals/user_change_pass.php');
   }
   ?>
-
+<div class="col-md-9">
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -120,4 +120,5 @@
             </div>
         </form>
     </div>
+</div>
 </div>

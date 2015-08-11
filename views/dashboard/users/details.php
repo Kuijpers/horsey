@@ -14,7 +14,7 @@
   <li class="active">User info</li>
 </ol>
 
-
+<div class="col-md-9">
 <div class="panel panel-default">
     <div class="panel-heading">
       <div class="col-md-12">
@@ -244,4 +244,5 @@
         </table>
     </div>
 
+</div>
 </div>
