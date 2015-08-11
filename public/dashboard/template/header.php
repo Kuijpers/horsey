@@ -1,14 +1,7 @@
 <?php
-use DKW\Tracking\Logged as Logged;
 use DKW\Language\Language as Language;
 
 $default_language = $this->general_settings[0]['value'];
-
-        /**
-         * Check if user is already logged in. If not redirect to loginpage.
-         *
-         */
-        Logged::check_logged();
 ?>
 
 <!DOCTYPE html>

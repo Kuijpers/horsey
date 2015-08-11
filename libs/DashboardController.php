@@ -1,5 +1,5 @@
 <?php
-
+use DKW\Tracking\Logged as Logged;
 /**
  * Description of DashboardController
  *
@@ -14,6 +14,13 @@ class DashboardController extends Controller{
         parent::__construct(); // Insert __construct method from Class controller
         
         //Debug::sentence("Dashboard controller");
+        
+        /**
+         * Check if user is already logged in. If not redirect to loginpage.
+         *
+         */
+        Logged::check_logged();
+        
     }
 
     //put your code here
