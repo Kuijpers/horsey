@@ -45,6 +45,15 @@ class View{
                 require 'public/dashboard/template/footer.php';
             
             break;
+            case 'userdashboard':
+        
+                require 'public/userdashboard/template/header.php';
+                require 'public/userdashboard/template/nav.php';
+                require 'views/userdashboard/' . $name . '.php';
+                require 'public/userdashboard/template/notification.php';
+                require 'public/userdashboard/template/footer.php';
+            
+            break;
             case 'login':
         
                 require 'public/login/template/header.php';

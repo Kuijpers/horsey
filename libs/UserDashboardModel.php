@@ -5,7 +5,7 @@
  *
  * @author Web
  */
-class DashboardModel extends Model {
+class UserDashboardModel extends Model {
 
     /**
      * *  function __construct will automatically generate when method is called
@@ -43,9 +43,7 @@ class DashboardModel extends Model {
         
         $this->session_track->db_sessions($check, $where);
         
-        if($_SESSION['login_usertype']== 'user'){
-            header('location:'. URL .'userdashboard');
-        }
+        
         
         
         

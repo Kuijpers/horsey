@@ -97,7 +97,12 @@ class Index_Model extends Model{
                     //echo "Set shorttime"; die();
                     $this->_cookie->cookie_set(COOKIE_LOG_NAME, $data[0]['login_id'],'Session');
                 }
-            header('location:'. URL .'dashboard');
+                
+            if( $data[0]['login_usertype'] == 'user'){
+               header('location:'. URL .'userdashboard'); 
+            }else{
+                header('location:'. URL .'dashboard');
+            }
             
         }
         elseif($data[0]['count'] == 1 && $data[0]['login_verified'] == "0"){
