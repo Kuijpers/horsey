@@ -62,7 +62,10 @@ class Session{
      */
     public static function display(){
         if(isset($_SESSION)){
+            echo "<pre>";
+            echo "<h5><b>Current active Sessions!!</b></h5>";
             print_r($_SESSION);
+            echo "</pre>";
         }else{
             echo "No Session is set";
         }

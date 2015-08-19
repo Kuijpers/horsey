@@ -21,6 +21,7 @@ class DashboardController extends Controller{
          */
         Logged::check_logged();
         
+        
     }
 
     //put your code here
