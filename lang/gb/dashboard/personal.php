@@ -22,6 +22,14 @@
         'PERSONAL_PROFILE_REGISTRATION_TITLE' => 'Registration',
         'PERSONAL_PROFILE_REGISTRATION_MESSAGE' => 'Your registration',
      
+        'PERSONAL_PROFILE_EDIT_REGISTRATION_TITLE' => 'Edit registration',
+        'PERSONAL_PROFILE_EDIT_REGISTRATION_MESSAGE' => 'Your registration to edit',
+        'PERSONAL_PROFILE_EDIT_REGISTRATION_BUTTON' => 'Change your personal information',
+     
+        'PERSONAL_PROFILE_EDIT_PICTURE_BUTTON' => 'Change your picture',
+     
+        'PERSONAL_PROFILE_EDIT_USERNAME_BUTTON' => 'Change your username',
+     
         'PERSONAL_PROFILE_LOGIN_TITLE' => 'Login',
         'PERSONAL_PROFILE_LOGIN_MESSAGE' => 'Your login details',
      
@@ -41,7 +49,7 @@
         'PERSONAL_PROFILE_USER_TELEPHONE'            =>  'Phone number',
         'PERSONAL_PROFILE_USER_EMAIL'                =>  'Emailaddress',
      
-        'PERSONAL_PROFILE_USER_LANGUAGE'            =>  'Default language',
+        'PERSONAL_PROFILE_USER_LANGUAGE'             =>  'Language',
         'PERSONAL_PROFILE_USER_CREATION_DATE'        =>  'Creation date',
         'PERSONAL_PROFILE_USER_CREATION_TIME'        =>  'Creation time',
      
@@ -61,6 +69,15 @@
             'PERSONAL_PROFILE_STATUS_TITLE_BLOCKED'     =>  'Blocked',
             'PERSONAL_PROFILE_STATUS_TITLE_INACTIVE'    =>  'Inactive',
      
+      /*
+  * Related to Cookies
+  */        
+         'PERSONAL_PROFILE_COOKIES_SUCCES_UPDATED_USERNAME'     => 'The status is changed!!',
+         'PERSONAL_PROFILE_COOKIES_SUCCES_UPDATED_REGISTRATION' => 'Your registration is updated !!',
+         
+         'PERSONAL_PROFILE_COOKIES_WARNING_GLOBAL'   => '',
+         
+         'PERSONAL_PROFILE_COOKIES_DANGER_CHANGE'     => '',
      
      
  ]);

@@ -27,6 +27,8 @@
      
      'DASH_ADD'                 => 'Add',
      
+     'DASH_UPDATE'              => 'Update',
+     
      'DASH_NEXT'                => 'Next',
      'DASH_PREVIOUS'            => 'Previous',
      'DASH_FIRST'               => 'First',
@@ -45,6 +47,7 @@
      'DASH_NO_INFO'             => 'No information available !',
      
      
+     'DASH_LANG_'               => 'Default language (English)',
      'DASH_LANG_DE'             => 'German',
      'DASH_LANG_FR'             => 'French',
      'DASH_LANG_GB'             => 'English',

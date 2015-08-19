@@ -27,6 +27,8 @@
      
      'DASH_ADD'                 => 'Toevoegen',
      
+     'DASH_UPDATE'              => 'Update',
+     
      'DASH_NEXT'                => 'Volgende',
      'DASH_PREVIOUS'            => 'Vorige',
      'DASH_FIRST'               => 'Eerste',
@@ -45,6 +47,7 @@
      'DASH_NO_INFO'             => 'Geen informatie beschikbaar!',
      
      
+     'DASH_LANG_'               => 'Standaard taal (Nederlands)',
      'DASH_LANG_DE'             => 'Duits',
      'DASH_LANG_FR'             => 'Frans',
      'DASH_LANG_GB'             => 'Engels',
