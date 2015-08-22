@@ -52,6 +52,12 @@
 
      ,'NAV_MESSAGES'       => 'Berichten'
          ,'NAV_MESSAGES_VIEWALL'       => 'Bekijk ze allemaal'
+     
+     ,'NAV_REQUESTS'       => 'Verzoeken'
+         ,'NAV_REQUESTS_VIEWALL'       => 'Bekijk ze allemaal'
+     
+     ,'NAV_FAVOURITS'       => 'Favorieten'
+         ,'NAV_FAVOURITS_VIEWALL'       => 'Bekijk ze allemaal'
 
      ,'NAV_PERSONAL'       => ''     
          ,'NAV_PERSONAL_PROFILE'        => 'Profiel'

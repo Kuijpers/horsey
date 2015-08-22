@@ -31,130 +31,32 @@ use DKW\Tracking\Session as Session;
                 </li>
 <!-- END DASHBOARD -->
 
-<!-- START PAGES -->
-                <li class="dropdown <?php if($this->firstactive == 'widgets'){echo 'active';}  ?>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-list-alt"></span>
-                        <?php  echo $lang['NAV_PAGES']; ?> 
-                        <b class="caret"></b>
+<!-- START MESSAGES -->
+                <li <?php if($this->firstactive == 'messages'){echo 'class="active"';}  ?> >
+                    <a href="<?php echo URL  ?>dashboard/">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <?php  echo $lang['NAV_MESSAGES']; ?>
                     </a>
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-        <!-- MAIN PAGE -->
-                        <li class="<?php if($this->secondactive == 'homepage'){echo 'active';}  ?>" >
-                            <a href="<?php echo URL  ?>dashboard/homepage">
-                                <?php  echo $lang['NAV_PAGES_HOME']; ?> 
-                            </a>
-                        </li>
-        <!-- ABOUT PAGE -->
-                        <li class="<?php if($this->secondactive == 'about_us'){echo 'active';}  ?>" >
-                            <a href="<?php echo URL  ?>dashboard/about">
-                                <?php  echo $lang['NAV_PAGES_ABOUT']; ?>
-                            </a>
-                        </li>
-        <!-- HORSE PAGE -->
-                        <li class="dropdown-submenu <?php if($this->secondactive == 'horses_overview'){echo 'active';}  ?>">
-                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/horses">
-                                <?php  echo $lang['NAV_PAGES_HORSES']; ?>
-                            </a>
-                                <ul class="dropdown-menu">
-                                  <li class="<?php if($this->thirdactive == 'horses_overview'){echo 'active';}  ?>" >
-                                      <a tabindex="-1" href="<?php echo URL  ?>dashboard/horses">
-                                          <?php  echo $lang['NAV_PAGES_HORSES_OVERVIEW']; ?>
-                                      </a>
-                                  </li>
-                                  <li class="<?php if($this->thirdactive == 'horses_owned'){echo 'active';}  ?>" >
-                                      <a href="<?php echo URL  ?>dashboard/horses/owned">
-                                          <?php  echo $lang['NAV_PAGES_HORSES_OWNED']; ?>
-                                      </a>
-                                  </li>
-                                  <li class="<?php if($this->thirdactive == 'horses_friend'){echo 'active';}  ?>" >
-                                      <a href="<?php echo URL  ?>dashboard/horses/friend">
-                                          <?php  echo $lang['NAV_PAGES_HORSES_FRIENDS']; ?>
-                                      </a>
-                                  </li>
-                                </ul>
-                        </li>
-                        <li class="divider">
-                        </li>
-        <!-- FOR SALE -->
-                        <li class="dropdown-submenu <?php if($this->secondactive == 'sale'){echo 'active';}  ?>">
-                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/sale">
-                                <?php  echo $lang['NAV_PAGES_FORSALE']; ?>
-                            </a>
-                                <ul class="dropdown-menu">
-                                  <li <?php if($this->thirdactive == 'sale'){echo 'class="active"';}  ?>>
-                                      <a tabindex="-1" href="<?php echo URL  ?>dashboard/sale">
-                                          <?php  echo $lang['NAV_PAGES_FORSALE_OVERVIEW']; ?>
-                                      </a>
-                                  </li>
-                                  <li <?php if($this->thirdactive == 'horses_sale'){echo 'class="active"';}  ?>>
-                                      <a href="<?php echo URL  ?>dashboard/sale/horses">
-                                          <?php  echo $lang['NAV_PAGES_FORSALE_HORSES']; ?>
-                                      </a>
-                                  </li>
-                                  <li <?php if($this->thirdactive == 'equipment_sale'){echo 'class="active"';}  ?>>
-                                      <a href="<?php echo URL  ?>dashboard/sale/equipment">
-                                          <?php  echo $lang['NAV_PAGES_FORSALE_EQUIPMENT']; ?>
-                                      </a>
-                                  </li>
-                                </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li  <?php if($this->secondactive == 'links'){echo 'class="active"';}  ?>>
-                            <a href="<?php echo URL  ?>dashboard/links">
-                                <?php  echo $lang['NAV_PAGES_LINKS']; ?>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-<!-- END PAGES -->
+<!-- END MESSAGES -->
 
-<!-- START SETTINGS -->
-                <li class="dropdown <?php if($this->firstactive == 'settings'){echo 'active';}  ?>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-cog"></span>
-                        <?php  echo $lang['NAV_SETTINGS']; ?> 
-                        <b class="caret"></b>
+<!-- START REQUESTS -->
+                <li <?php if($this->firstactive == 'requests'){echo 'class="active"';}  ?> >
+                    <a href="<?php echo URL  ?>dashboard/">
+                        <span class="glyphicon glyphicon-sunglasses"></span>
+                        <?php  echo $lang['NAV_REQUESTS']; ?>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li <?php if($this->secondactive == 'contact'){echo 'class="active"';}  ?>>
-                            <a href="<?php echo URL  ?>dashboard/contact">
-                                <?php  echo $lang['NAV_SETTINGS_CONTACT']; ?> 
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li <?php if($this->secondactive == 'breeding'){echo 'class="active"';}  ?>>
-                            <a href="<?php echo URL  ?>dashboard/breeding">
-                                <?php  echo $lang['NAV_SETTINGS_BREEDING']; ?> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL  ?>dashboard/sale/settings">
-                                <?php  echo $lang['NAV_SETTINGS_FORSALE']; ?> 
-                            </a>
-                        </li>
-                        <li class="divider">
-                        </li>
-                        <li class="dropdown-submenu <?php if($this->secondactive == 'admin'){echo 'active';}  ?>">
-                            <a tabindex="-1" href="<?php echo URL  ?>dashboard/admin/">
-                                <?php  echo $lang['NAV_SETTINGS_ADMIN']; ?> 
-                            </a>
-                                <ul class="dropdown-menu">
-                                  <li class="<?php if($this->thirdactive == 'users'){echo 'active';}  ?>">
-                                      <a tabindex="-1" href="<?php echo URL  ?>dashboard/users">
-                                          <?php  echo $lang['NAV_SETTINGS_ADMIN_USERS']; ?>
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="<?php echo URL  ?>dashboard/#">
-                                          Empty for now
-                                      </a>
-                                  </li>
-                                </ul>
-                        </li>
-                    </ul>
                 </li>
-<!-- END SETTINGS -->
+<!-- END REQUESTS -->
+
+<!-- START FAVOURITS -->
+                <li <?php if($this->firstactive == 'favourits'){echo 'class="active"';}  ?> >
+                    <a href="<?php echo URL  ?>dashboard/">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <?php  echo $lang['NAV_FAVOURITS']; ?>
+                    </a>
+                </li>
+<!-- END FAVOURITS -->
 
 <!-- START CALENDAR -->
                 <li <?php if($this->firstactive == 'calendar'){echo 'class=active';}  ?> >
