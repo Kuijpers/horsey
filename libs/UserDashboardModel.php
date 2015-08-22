@@ -44,7 +44,9 @@ class UserDashboardModel extends Model {
         $this->session_track->db_sessions($check, $where);
         
         
-        
+        if($_SESSION['login_usertype']!= 'user'){
+            header('location:'. URL .'dashboard');
+        }
         
         
     } // __construct()
