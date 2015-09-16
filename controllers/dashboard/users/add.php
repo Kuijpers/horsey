@@ -32,6 +32,15 @@ class Add extends DashboardController{
     private $secondactive = 'admin';
     private $thirdactive = 'users';
     private $fourthactive = '';
+    // Breadcrumb settings
+    private $breadcrumblist = [ 'NAV_DASHBOARD' => 'index',
+                                'NAV_SETTINGS' => '',
+                                'NAV_SETTINGS_ADMIN' => 'dashboard/admin',
+                                'NAV_SETTINGS_ADMIN_USERS' => 'dashboard/users',
+                                'NAV_SETTINGS_ADMIN_ADDUSER' => '',
+                                ]; 
+    private $breadcrumbclass = 'breadcrumb';
+    private $breadcrumbactive = 'NAV_SETTINGS_ADMIN_ADDUSER';
     
 // Class variables
     protected $_error;
@@ -96,6 +105,9 @@ class Add extends DashboardController{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->arrBreadcrumb = [$this->breadcrumblist,
+                                        $this->breadcrumbclass,
+                                        $this->breadcrumbactive];
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->show_enum = $this->model->show_enum('Login', 'login_usertype');
           $this->view->pagepath = $this->pagepath;

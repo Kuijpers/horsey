@@ -27,6 +27,4 @@ class Model{
         return $this->db->read('SELECT * FROM General_settings');        
     }
     
-    
-    
 } // End of class

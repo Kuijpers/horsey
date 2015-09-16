@@ -10,13 +10,6 @@ use DKW\Tracking\Session as Session;
     $token = new DKW\Security\Token();
 ?>
 
-<ol class="breadcrumb">
-  <li><a href="<?php echo URL  ?>dashboard/">Home</a></li>
-  <li>Settings</li>
-  <li> <a href="<?php echo URL ?>admin_settings">Admin</a></li>
-  <li class="active">Users</li>
-</ol>
-
 <div class="col-md-9">
 <div class="panel panel-default">
   <!-- Default panel contents -->

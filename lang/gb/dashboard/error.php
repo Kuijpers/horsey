@@ -13,7 +13,7 @@
         }
  $lang = array_merge($lang, [
      
-     
+     'BREADCRUMB_NOTSET'                  => 'No breadcrumbs are set !',
      
      
  ]);

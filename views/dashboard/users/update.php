@@ -10,15 +10,7 @@
     
     //echo "<pre>";print_r($userdata);echo "</pre>";
     
-?>
-<ol class="breadcrumb">
-  <li><a href="<?php echo URL  ?>dashboard/">Home</a></li>
-  <li>Settings</li>
-  <li><a href="<?php echo URL  ?>admin_settings/">Admin</a></li>
-  <li class="active">Update user</li>
-</ol>
 
-  <?php
   if($_SESSION['login_usertype'] == 'owner'){
         require_once('public/dashboard/template/modals/user_change_pass.php');
   }

@@ -7,13 +7,6 @@
     //Debug::array_list($userdata, "User data coming from database");
     //Debug::array_list($statusdata, "Status data coming from database");
 ?>
-<ol class="breadcrumb">
-  <li><a href="<?php echo URL  ?>dashboard/">Home</a></li>
-  <li>Settings</li>
-  <li><a href="<?php echo URL  ?>admin_settings/">Admin</a></li>
-  <li class="active">User info</li>
-</ol>
-
 <div class="col-md-9">
 <div class="panel panel-default">
     <div class="panel-heading">

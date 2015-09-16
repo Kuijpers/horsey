@@ -32,6 +32,15 @@ class Update extends DashboardController{
     private $secondactive = 'admin';
     private $thirdactive = 'users';
     private $fourthactive = '';
+    // Breadcrumb settings
+    private $breadcrumblist = [ 'NAV_DASHBOARD' => 'index',
+                                'NAV_SETTINGS' => '',
+                                'NAV_SETTINGS_ADMIN' => 'dashboard/admin',
+                                'NAV_SETTINGS_ADMIN_USERS' => 'dashboard/users',
+                                'NAV_SETTINGS_ADMIN_UPDATEUSER' => '',
+                                ]; 
+    private $breadcrumbclass = 'breadcrumb';
+    private $breadcrumbactive = 'NAV_SETTINGS_ADMIN_UPDATEUSER';
     
 // Class variables
     protected $_error;
@@ -93,6 +102,9 @@ class Update extends DashboardController{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->arrBreadcrumb = [$this->breadcrumblist,
+                                        $this->breadcrumbclass,
+                                        $this->breadcrumbactive];
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->show_update_info = $this->model->show_update_info($id);
           $this->view->show_enum = $this->model->show_enum('Login', 'login_usertype');

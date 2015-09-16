@@ -43,6 +43,9 @@
      
          ,'NAV_SETTINGS_ADMIN'        => 'Administratief'
              ,'NAV_SETTINGS_ADMIN_USERS'      => 'Gebruikers'
+             ,'NAV_SETTINGS_ADMIN_ADDUSER'      => 'Gebruiker toevoegen'
+             ,'NAV_SETTINGS_ADMIN_USERINFO'      => 'Gebruikers informatie'
+             ,'NAV_SETTINGS_ADMIN_UPDATEUSER'      => 'Update gebruiker'
 
      ,'NAV_CALENDAR'       => 'Kalender'
 

@@ -25,6 +25,13 @@ class Index extends DashboardController{
     private $secondactive = 'homepage';
     private $thirdactive = '';
     private $fourthactive = '';
+    // Breadcrumb settings
+    private $breadcrumblist = [ 'NAV_DASHBOARD' => 'index',
+                                'NAV_PAGES' => '',
+                                'NAV_PAGES_HOME' => '',
+                                ]; 
+    private $breadcrumbclass = 'breadcrumb';
+    private $breadcrumbactive = 'NAV_PAGES_HOME';
     
     
     
@@ -79,6 +86,9 @@ class Index extends DashboardController{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->arrBreadcrumb = [$this->breadcrumblist,
+                                        $this->breadcrumbclass,
+                                        $this->breadcrumbactive];
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->render($this->mainpage.'index', $this->setup); 
     }

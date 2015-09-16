@@ -32,6 +32,15 @@ class Details extends DashboardController{
     private $secondactive = 'admin';
     private $thirdactive = 'users';
     private $fourthactive = '';
+    // Breadcrumb settings
+    private $breadcrumblist = [ 'NAV_DASHBOARD' => 'index',
+                                'NAV_SETTINGS' => '',
+                                'NAV_SETTINGS_ADMIN' => 'dashboard/admin',
+                                'NAV_SETTINGS_ADMIN_USERS' => 'dashboard/users',
+                                'NAV_SETTINGS_ADMIN_USERINFO' => '',
+                                ]; 
+    private $breadcrumbclass = 'breadcrumb';
+    private $breadcrumbactive = 'NAV_SETTINGS_ADMIN_USERINFO';
     
     
 /**
@@ -72,6 +81,9 @@ class Details extends DashboardController{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->arrBreadcrumb = [$this->breadcrumblist,
+                                        $this->breadcrumbclass,
+                                        $this->breadcrumbactive];
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->show_single_userdata = $this->model->show_single_userdata($user_id);
           $this->view->show_single_userstatusoverview = $this->model->show_single_userstatusoverview($user_id);

@@ -32,6 +32,14 @@ class Index extends DashboardController{
     private $secondactive = 'admin';
     private $thirdactive = 'users';
     private $fourthactive = '';
+    // Breadcrumb settings
+    private $breadcrumblist = [ 'NAV_DASHBOARD' => 'index',
+                                'NAV_SETTINGS' => '',
+                                'NAV_SETTINGS_ADMIN' => 'dashboard/admin',
+                                'NAV_SETTINGS_ADMIN_USERS' => '',
+                                ]; 
+    private $breadcrumbclass = 'breadcrumb';
+    private $breadcrumbactive = 'NAV_SETTINGS_ADMIN_USERS';
     
     
 /**
@@ -80,6 +88,9 @@ class Index extends DashboardController{
           $this->view->secondactive = $this->secondactive;
           $this->view->thirdactive = $this->thirdactive;
           $this->view->fourthactive = $this->fourthactive;
+          $this->view->arrBreadcrumb = [$this->breadcrumblist,
+                                        $this->breadcrumbclass,
+                                        $this->breadcrumbactive];
           $this->view->general_settings = $this->model->get_general_settings();
           $this->view->show_usersdata = $this->model->show_usersdata();
           $this->view->pagepath = $this->pagepath;

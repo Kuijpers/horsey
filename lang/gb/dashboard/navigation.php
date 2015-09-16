@@ -43,6 +43,9 @@
      
          ,'NAV_SETTINGS_ADMIN'        => 'Admin'
              ,'NAV_SETTINGS_ADMIN_USERS'      => 'Users'
+             ,'NAV_SETTINGS_ADMIN_ADDUSER'      => 'Add user'
+             ,'NAV_SETTINGS_ADMIN_USERINFO'      => 'User info'
+             ,'NAV_SETTINGS_ADMIN_UPDATEUSER'      => 'Update user'
 
      ,'NAV_CALENDAR'       => 'Calendar'
 
